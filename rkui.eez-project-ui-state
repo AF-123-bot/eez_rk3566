@@ -1,12 +1,13 @@
 {
   "navigation": {
     "selectedUserPageObject": "[rkui.eez-project]:/userPages/0",
-    "selectedActionObject": "[rkui.eez-project]:/actions/2",
+    "selectedActionObject": "[rkui.eez-project]:/actions/5",
     "selectedGlobalVariableObject": "[rkui.eez-project]:/variables/globalVariables/16",
-    "selectedFontObject": "[rkui.eez-project]:/fonts/1",
-    "selectedBitmapObject": "[rkui.eez-project]:/bitmaps/2",
+    "selectedStyleObject": "[rkui.eez-project]:/lvglStyles/styles/0",
+    "selectedFontObject": "[rkui.eez-project]:/fonts/2",
+    "selectedBitmapObject": "[rkui.eez-project]:/bitmaps/11",
     "subnavigationSelectedItems": {
-      "variables-tab/sub-navigation/selected-item": "Actions"
+      "variables-tab/sub-navigation/selected-item": "Global"
     }
   },
   "layoutModel": {
@@ -27,7 +28,7 @@
           },
           {
             "type": "border",
-            "selected": 2,
+            "selected": 1,
             "size": 240,
             "location": "right",
             "children": [
@@ -209,14 +210,14 @@
               "children": [
                 {
                   "type": "tab",
-                  "id": "#14cbb3f0-8909-4daa-b6f4-cd6951bdf78c",
-                  "name": "btn_sample_motor_cw",
+                  "id": "#2d1893b7-95da-4625-b3ed-af79ee1b2f05",
+                  "name": "36",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[rkui.eez-project]:/actions/2",
-                    "permanent": false
+                    "objectPath": "[rkui.eez-project]:/fonts/2",
+                    "permanent": true
                   },
-                  "icon": "material:code"
+                  "icon": "material:font_download"
                 },
                 {
                   "type": "tab",
@@ -801,7 +802,8 @@
                       "component": "styles",
                       "enableClose": false
                     }
-                  ]
+                  ],
+                  "active": true
                 },
                 {
                   "type": "tabset",
@@ -819,8 +821,7 @@
                       "component": "preview",
                       "enableClose": false
                     }
-                  ],
-                  "active": true
+                  ]
                 }
               ]
             }
@@ -1237,18 +1238,22 @@
       "selection": {
         "0": {
           "0": {},
-          "4": {},
-          "5": {},
-          "6": {}
+          "7": {},
+          "8": {},
+          "9": {
+            "0": {},
+            "1": {},
+            "2": {}
+          }
         },
         "1": {}
       },
       "transform": {
         "translate": {
-          "x": -270.2112000603044,
-          "y": -238.59151967435537
+          "x": -313.15655694950897,
+          "y": -282.65276841666116
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1273,10 +1278,10 @@
       },
       "transform": {
         "translate": {
-          "x": -238.1666361490885,
-          "y": -269.445821126302
+          "x": -278.166514078776,
+          "y": -247.84578450520826
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1298,19 +1303,20 @@
           },
           "7": {
             "0": {}
-          }
+          },
+          "8": {},
+          "9": {},
+          "12": {}
         },
         "1": {},
-        "5": {
-          "$selected": true
-        }
+        "5": {}
       },
       "transform": {
         "translate": {
-          "x": -314.4000244140625,
-          "y": -590.3911473083496
+          "x": -330.8095463053387,
+          "y": -238.47521400248212
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1329,19 +1335,19 @@
             "3": {},
             "4": {}
           },
-          "6": {}
+          "6": {
+            "$selected": true
+          }
         },
         "1": {},
-        "5": {
-          "$selected": true
-        }
+        "5": {}
       },
       "transform": {
         "translate": {
           "x": -236.98244277215633,
           "y": -274.5803674691839
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1356,20 +1362,25 @@
           "3": {},
           "4": {
             "3": {},
-            "6": {
-              "0": {}
+            "4": {},
+            "5": {},
+            "6": {},
+            "7": {},
+            "8": {
+              "$selected": true
             }
           },
+          "5": {},
           "7": {}
         },
         "5": {}
       },
       "transform": {
         "translate": {
-          "x": -290.3627886041795,
-          "y": -206.80655495714782
+          "x": -294.0247240104885,
+          "y": -237.1240307650313
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1382,19 +1393,19 @@
       "selection": {
         "0": {
           "3": {
-            "0": {
+            "0": {},
+            "1": {
               "$selected": true
-            },
-            "1": {}
+            }
           }
         }
       },
       "transform": {
         "translate": {
-          "x": -330.3999938964844,
-          "y": -340
+          "x": -367.1999816894531,
+          "y": -257.5999755859375
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1472,6 +1483,61 @@
         },
         "scale": 1
       }
+    },
+    "[rkui.eez-project]:/lvglStyles/styles[tree-state]": {
+      "0": {
+        "$selected": true
+      }
+    },
+    "[rkui.eez-project]:/actions/6[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[rkui.eez-project]:/actions/8[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[rkui.eez-project]:/actions/9[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[rkui.eez-project]:/actions/7[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[rkui.eez-project]:/actions/10[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
     }
   },
   "activeOutputSection": 0,
@@ -1487,12 +1553,12 @@
   "logsPanelFilter": "all",
   "selectedStylePropertyName": "",
   "lvglPart": "MAIN",
-  "lvglState": "CHECKED",
+  "lvglState": "DEFAULT",
   "lvglExpandedPropertiesGroup": [
     "TEXT"
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
-  "flowZoom": 0.5,
-  "implementationLanguage": "C++"
+  "flowZoom": 0.67,
+  "implementationLanguage": "C"
 }

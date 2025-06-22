@@ -1,0 +1,149 @@
+#include "main.h"
+#include "gpio.h"
+#include "uart.h"
+#include "ui.h"
+#include "screens.h"
+#include "vars.h"
+#include "data_save_load.h"
+
+static lv_display_t * hal_init(int32_t w, int32_t h);
+void update_time_cb(lv_timer_t *timer);
+void lvgl_data_init(void);
+
+
+int main() {
+    setenv("SDL_VIDEODRIVER", "x11", 1);
+    setenv("SDL_RENDER_DRIVER", "software", 1);
+
+    int fd = open_serial("/dev/ttyS3", 115200);
+    if (fd < 0) return 1;
+    printf("串口已开启。\n");
+
+    if (gpio_init(&dir_gpio, "gpiochip1", 8) < 0) return -1;  // GPIO1_B0 direction
+    if (gpio_init(&en_gpio, "gpiochip1", 4) < 0) return -1;   // GPIO1_A4 enable
+    printf("采样电机已启动\n");
+
+    lv_init();
+    printf("LVGL 初始化完成\n");
+    hal_init(1024, 768);
+    ui_init();
+    printf("UI 初始化完成\n");
+    
+    usleep(5000);
+
+    lvgl_data_init();
+    printf("已加载上一次保存数据\n");
+
+    lv_timer_create(update_time_cb, 1000, NULL);  //每秒更新
+
+    while (1) {
+        lv_timer_handler();
+        usleep(5000);
+        ui_tick();
+    }
+
+    return 0;
+}
+
+/**
+ * Initialize the Hardware Abstraction Layer (HAL) for the LVGL graphics
+ * library
+ */
+static lv_display_t * hal_init(int32_t w, int32_t h)
+{
+
+  lv_group_set_default(lv_group_create());
+
+  lv_display_t * disp = lv_sdl_window_create(w, h);
+
+  lv_indev_t * mouse = lv_sdl_mouse_create();
+  lv_indev_set_group(mouse, lv_group_get_default());
+  lv_indev_set_display(mouse, disp);
+  lv_display_set_default(disp);
+
+  // LV_IMAGE_DECLARE(mouse_cursor_icon); /*Declare the image file.*/
+  // lv_obj_t * cursor_obj;
+  // cursor_obj = lv_image_create(lv_screen_active()); /*Create an image object for the cursor */
+  // lv_image_set_src(cursor_obj, &mouse_cursor_icon);           /*Set the image source*/
+  // lv_indev_set_cursor(mouse, cursor_obj);             /*Connect the image  object to the driver*/
+
+  lv_indev_t * mousewheel = lv_sdl_mousewheel_create();
+  lv_indev_set_display(mousewheel, disp);
+  lv_indev_set_group(mousewheel, lv_group_get_default());
+
+  lv_indev_t * kb = lv_sdl_keyboard_create();
+  lv_indev_set_display(kb, disp);
+  lv_indev_set_group(kb, lv_group_get_default());
+
+  return disp;
+}
+
+void update_time_cb(lv_timer_t *timer)
+{
+    (void) timer;
+
+    static int last_min = -1;
+    static int last_hour = -1;
+    static int last_day = -1;
+    static int last_month = -1;
+    static int last_year = -1;
+
+    time_t raw_time;
+    struct tm *time_info;
+
+    time(&raw_time);
+    time_info = localtime(&raw_time);
+
+    int hour = time_info->tm_hour;
+    int min = time_info->tm_min;
+    int day = time_info->tm_mday;
+    int month = time_info->tm_mon + 1;
+    int year = time_info->tm_year + 1900;
+
+    // 只在变化时更新变量，避免闪烁
+    if (hour != last_hour) {
+        set_var_time_hour(hour);
+        last_hour = hour;
+    }
+    if (min != last_min) {
+        set_var_time_min(min);
+        last_min = min;
+    }
+    if (day != last_day) {
+        set_var_date_day(day);
+        last_day = day;
+    }
+    if (month != last_month) {
+        set_var_date_month(month);
+        last_month = month;
+    }
+    if (year != last_year) {
+        set_var_date_year(year);
+        last_year = year;
+    }
+}
+
+void lvgl_data_init(void)
+{
+    //读取shift页面上一次保存的数据
+    load_shift_data(&start_time_1, &start_time_2, &start_time_3, &stop_time_1, &stop_time_2, &stop_time_3, &sample_times_1, &sample_times_2, &sample_times_3);
+    set_var_start_time_1(start_time_1);
+    set_var_start_time_2(start_time_2);
+    set_var_start_time_3(start_time_3);
+    set_var_stop_time_1(stop_time_1);
+    set_var_stop_time_2(stop_time_2);
+    set_var_stop_time_3(stop_time_3);
+    set_var_sample_times_1(sample_times_1);
+    set_var_sample_times_2(sample_times_2);
+    set_var_sample_times_3(sample_times_3);
+    //读取sample页面上一次保存的数据
+    load_sample_data(&sample_motor_stop_seconds,&sample_motor_cw_seconds,&sample_motor_ccw_seconds);
+    set_var_sample_motor_ccw_seconds(sample_motor_ccw_seconds);
+    set_var_sample_motor_cw_seconds(sample_motor_cw_seconds);
+    set_var_sample_motor_stop_seconds(sample_motor_stop_seconds);
+    //读取communicate页面上一次保存的数据
+
+    //读取motor_test页面上一次保存的数据
+    load_test_data(&rotational_speed);
+    set_var_rotational_speed(rotational_speed);
+}

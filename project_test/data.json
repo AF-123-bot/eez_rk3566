@@ -1,0 +1,23 @@
+{
+	"last_data":	{
+		"start_time_1":	0,
+		"start_time_2":	0,
+		"start_time_3":	0,
+		"stop_time_1":	0,
+		"stop_time_2":	0,
+		"stop_time_3":	0,
+		"sample_times_1":	0,
+		"sample_times_2":	0,
+		"sample_times_3":	0,
+		"motor_cw_seconds":	3,
+		"motor_ccw_seconds":	2,
+		"motor_stop_seconds":	1,
+		"address":	"",
+		"gateway":	"",
+		"dns":	"",
+		"rotational_speed":	400
+	},
+	"Monday":	{
+		"sample_number":	0
+	}
+}
