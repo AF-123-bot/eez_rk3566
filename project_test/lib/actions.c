@@ -229,14 +229,14 @@ void action_btn_factory_reset(lv_event_t * e)
     set_var_sample_times_2(0);
     set_var_sample_times_3(0);
     //初始化sample页面数据
-    load_sample_data(0,0,0);
+    save_sample_data(0,0,0);
     set_var_sample_motor_ccw_seconds(0);
     set_var_sample_motor_cw_seconds(0);
     set_var_sample_motor_stop_seconds(0);
     //初始化communicate页面数据
 
     //初始化test页面数据
-    load_test_data(0);
+    save_test_data(0);
     set_var_rotational_speed(0);
 }
 
