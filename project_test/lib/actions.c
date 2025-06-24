@@ -30,8 +30,7 @@ extern char gateway[100];
 extern char dns[100];
 
 volatile bool motor_thread_stop_flag = false;   //线程标志
-int32_t sample_motor_flag = 0; // 0采样电机空闲中 ， 1采样电机运行中
-int32_t rotate_motor_flag = 0; // 0旋转电机空闲中 ， 1旋转电机运行中
+int32_t sample_motor_flag = 0; // 0电机空闲中 ， 1电机运行中
 extern int uart_fd;  // 声明全局串口文件描述符
 enum ScreensEnum current_page = 0;
 
@@ -169,49 +168,25 @@ void action_user_shutdown_reboot(lv_event_t * e)
     lv_obj_t *obj = lv_event_get_target(e);
     if(code == LV_EVENT_PRESSED)
     {
-        if(obj == objects.btn_user_shutdown)
+        if(obj == objects.btn_user)
         {    
-            lv_label_set_text(objects.sr_label, "请确认是否要关机");
             lv_obj_clear_flag(objects.sr_sure_container, LV_OBJ_FLAG_HIDDEN);   //显示确认是否关机界面
             // 将页面控件都disabled 
-            lv_obj_add_state(objects.btn_user_shutdown, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.btn_user_reboot, LV_STATE_DISABLED);
+            lv_obj_add_state(objects.btn_user, LV_STATE_DISABLED);
             lv_obj_add_state(objects.btn_factory_reset, LV_STATE_DISABLED);
             lv_obj_add_state(objects.setting8, LV_STATE_DISABLED);
             /////////////////////////////////////////////////////////////////////
-            // system("shutdown -h now");
-        }
-        else if(obj == objects.btn_user_reboot)
-        {
-            lv_label_set_text(objects.sr_label, "请确认是否要重启");
-            lv_obj_clear_flag(objects.sr_sure_container, LV_OBJ_FLAG_HIDDEN);   //显示确认是否重新启动界面
-            // 将页面控件都disabled 
-            lv_obj_add_state(objects.btn_user_shutdown, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.btn_user_reboot, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.btn_factory_reset, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.setting8, LV_STATE_DISABLED);
-            // system("reboot");
         }
         else if(obj == objects.btn_user_confuse)
         {
             lv_obj_add_flag(objects.sr_sure_container, LV_OBJ_FLAG_HIDDEN);     //隐藏界面
             // 将页面空间abled
-            lv_obj_clear_state(objects.btn_user_shutdown, LV_STATE_DISABLED);
-            lv_obj_clear_state(objects.btn_user_reboot, LV_STATE_DISABLED);
+            lv_obj_clear_state(objects.btn_user, LV_STATE_DISABLED);
             lv_obj_clear_state(objects.btn_factory_reset, LV_STATE_DISABLED);
             lv_obj_clear_state(objects.setting8, LV_STATE_DISABLED);
         }
-        else if(obj == objects.btn_user_sure)
-        {
-            // 执行对应的关机或者重新启动操作
-            const char *label_text = lv_label_get_text(objects.sr_label);
-
-            if (strcmp(label_text, "请确认是否要关机") == 0) {
-                system("shutdown -h now");
-            } else if (strcmp(label_text, "请确认是否要重新启动") == 0) {
-                system("reboot");
-            }
-        }
+        else if(obj == objects.btn_user_reboot) system("reboot");
+        else if(obj == objects.btn_user_shutdown)   system("shutdown -h now");
     }
 }
 
@@ -247,7 +222,7 @@ void action_btn_sample_motor(lv_event_t * e)
     lv_obj_t *obj = lv_event_get_target(e);
     if(code == LV_EVENT_PRESSED)
     {
-        if((obj == objects.btn_manual_take_cw && sample_motor_flag == 0) || (obj == objects.btn_sample_motor_cw && sample_motor_flag == 0))   //进行手动取灰操作
+        if(obj == objects.btn_manual_take_cw && sample_motor_flag == 0 || obj == objects.btn_sample_motor_cw && sample_motor_flag == 0)   //进行手动取灰操作
         {
             sample_motor_flag = 1;
             lv_obj_add_state(objects.btn_manual_take_ccw, LV_STATE_DISABLED);   //将手动清灰按钮设为disabled
@@ -255,7 +230,7 @@ void action_btn_sample_motor(lv_event_t * e)
             gpio_set_value(&en_gpio,1);     //使能电机
             gpio_set_value(&dir_gpio,0);    //设置电机正转
         }
-        else if((obj == objects.btn_manual_take_ccw && sample_motor_flag == 0) || (obj == objects.btn_sample_motor_ccw && sample_motor_flag == 0))   //进行手动清灰操作
+        else if(obj == objects.btn_manual_take_ccw && sample_motor_flag == 0 || obj == objects.btn_sample_motor_ccw && sample_motor_flag == 0)   //进行手动清灰操作
         {
             sample_motor_flag = 1;
             lv_obj_add_state(objects.btn_manual_take_cw, LV_STATE_DISABLED);   //将手动取灰按钮设为disabled
@@ -263,7 +238,7 @@ void action_btn_sample_motor(lv_event_t * e)
             gpio_set_value(&en_gpio,1);     //使能电机
             gpio_set_value(&dir_gpio,1);    //设置电机反转
         }
-        else if((obj == objects.btn_sample_stop && sample_motor_flag == 1) || (obj == objects.btn_sample_motor_stop && sample_motor_flag == 1))       //采样电机停止操作
+        else if(obj == objects.btn_sample_stop && sample_motor_flag == 1 || obj == objects.btn_sample_motor_stop && sample_motor_flag == 1)       //采样电机停止操作
         {
             sample_motor_flag = 0;
             motor_thread_stop_flag = true;
@@ -399,23 +374,20 @@ void action_btn_rotate_motor(lv_event_t * e)    //旋转电机测试按钮
     lv_obj_t *obj = lv_event_get_target(e);
     if(code == LV_EVENT_PRESSED)
     {
-        if(obj == objects.btn_rotate_motor_cw && rotate_motor_flag == 0)      //执行旋转电机正转操作
+        if(obj == objects.btn_rotate_motor_cw)      //执行旋转电机正转操作
         {
-            rotate_motor_flag = 1;
             lv_obj_add_state(objects.btn_rotate_motor_ccw, LV_STATE_DISABLED);   //将反转按钮设为disabled
             rotational_speed = get_var_rotational_speed();
             motor_forward(uart_fd,rotational_speed);        //发送旋转电机反转指令
         }
-        else if(obj == objects.btn_rotate_motor_ccw && rotate_motor_flag == 0)        //执行旋转电机反转操作
+        else if(obj == objects.btn_rotate_motor_ccw)        //执行旋转电机反转操作
         {
-            rotate_motor_flag = 1;
             lv_obj_add_state(objects.btn_rotate_motor_cw, LV_STATE_DISABLED);   //将正转按钮设为disabled
             rotational_speed = get_var_rotational_speed();
             motor_reverse(uart_fd,rotational_speed);
         }
-        else if(obj == objects.btn_rotate_motor_stop && rotate_motor_flag == 1)       //执行旋转电机停止操作
+        else if(obj == objects.btn_rotate_motor_stop)       //执行旋转电机停止操作
         {
-            rotate_motor_flag = 0;
             lv_obj_clear_state(objects.btn_rotate_motor_cw, LV_STATE_DISABLED);   //将正转按钮设为abled
             lv_obj_clear_state(objects.btn_rotate_motor_ccw, LV_STATE_DISABLED);   //将反转按钮设为abled
             motor_pause(uart_fd);

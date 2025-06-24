@@ -21,13 +21,14 @@ typedef struct _objects_t {
     lv_obj_t *sample_setting_page;
     lv_obj_t *communicate_setting_page;
     lv_obj_t *motor_test_setting_page;
+    lv_obj_t *historical_record_page;
     lv_obj_t *warning_page;
     lv_obj_t *setting8;
     lv_obj_t *btn_factory_reset;
     lv_obj_t *btn_user_reboot;
     lv_obj_t *btn_user_shutdown;
-    lv_obj_t *btn_user_sure;
     lv_obj_t *btn_user_confuse;
+    lv_obj_t *btn_user;
     lv_obj_t *obj0;
     lv_obj_t *btn_save_shift_setting;
     lv_obj_t *obj1;
@@ -72,38 +73,43 @@ typedef struct _objects_t {
     lv_obj_t *btn_rotate_motor_stop;
     lv_obj_t *input_rotational_speed;
     lv_obj_t *btn_save_motor_test_setting;
-    lv_obj_t *btn_warning_ok;
-    lv_obj_t *main1;
     lv_obj_t *obj23;
-    lv_obj_t *information;
     lv_obj_t *obj24;
     lv_obj_t *obj25;
-    lv_obj_t *temperature;
     lv_obj_t *obj26;
     lv_obj_t *obj27;
-    lv_obj_t *time_h;
-    lv_obj_t *date_y;
-    lv_obj_t *time_m;
     lv_obj_t *obj28;
     lv_obj_t *obj29;
+    lv_obj_t *btn_warning_ok;
+    lv_obj_t *main1;
     lv_obj_t *obj30;
-    lv_obj_t *date_m;
-    lv_obj_t *date_d;
-    lv_obj_t *barrel_1;
+    lv_obj_t *information;
     lv_obj_t *obj31;
-    lv_obj_t *barrel_2;
+    lv_obj_t *temperature;
     lv_obj_t *obj32;
-    lv_obj_t *barrel_3;
     lv_obj_t *obj33;
+    lv_obj_t *time;
+    lv_obj_t *date;
+    lv_obj_t *obj34;
+    lv_obj_t *obj35;
+    lv_obj_t *sample_motor_status;
+    lv_obj_t *rotate_motor_status;
+    lv_obj_t *barrel_1;
+    lv_obj_t *obj36;
+    lv_obj_t *barrel_2;
+    lv_obj_t *obj37;
+    lv_obj_t *barrel_3;
+    lv_obj_t *obj38;
     lv_obj_t *main_label;
     lv_obj_t *sr_sure_container;
     lv_obj_t *sr_label;
     lv_obj_t *title_2;
     lv_obj_t *button_left_shift;
+    lv_obj_t *obj39;
     lv_obj_t *input_main_shift;
-    lv_obj_t *obj34;
-    lv_obj_t *obj35;
-    lv_obj_t *obj36;
+    lv_obj_t *obj40;
+    lv_obj_t *obj41;
+    lv_obj_t *obj42;
     lv_obj_t *input_start_time1;
     lv_obj_t *input_start_time2;
     lv_obj_t *input_stop_time3;
@@ -113,34 +119,45 @@ typedef struct _objects_t {
     lv_obj_t *input_sample_times3;
     lv_obj_t *input_sample_times2;
     lv_obj_t *input_sample_times1;
-    lv_obj_t *obj37;
-    lv_obj_t *obj38;
-    lv_obj_t *obj39;
-    lv_obj_t *obj40;
-    lv_obj_t *obj41;
-    lv_obj_t *obj42;
     lv_obj_t *obj43;
     lv_obj_t *obj44;
     lv_obj_t *obj45;
+    lv_obj_t *obj46;
+    lv_obj_t *obj47;
+    lv_obj_t *obj48;
+    lv_obj_t *obj49;
+    lv_obj_t *obj50;
+    lv_obj_t *obj51;
     lv_obj_t *label_successful_shift;
     lv_obj_t *keyboard_auto;
     lv_obj_t *title_4;
     lv_obj_t *button_left_auto;
+    lv_obj_t *obj52;
     lv_obj_t *input_auto_sampling;
-    lv_obj_t *obj46;
+    lv_obj_t *obj53;
     lv_obj_t *keyboard_sample;
-    lv_obj_t *obj47;
+    lv_obj_t *obj54;
     lv_obj_t *label_successful_sample;
     lv_obj_t *title_3;
     lv_obj_t *button_left_communication;
+    lv_obj_t *obj55;
     lv_obj_t *input_main_communication;
     lv_obj_t *keyboard_communication;
     lv_obj_t *label_successful_communication;
     lv_obj_t *title_1;
     lv_obj_t *button_left_test;
+    lv_obj_t *obj56;
     lv_obj_t *input_main_test;
     lv_obj_t *keyboard_test;
     lv_obj_t *label_successful_test;
+    lv_obj_t *title_6;
+    lv_obj_t *button_left_test_1;
+    lv_obj_t *obj57;
+    lv_obj_t *input_main_test_1;
+    lv_obj_t *keyboard_test_1;
+    lv_obj_t *label_successful_test_1;
+    lv_obj_t *sampling_frequency_list;
+    lv_obj_t *failure_number_list;
     lv_obj_t *title_5;
     lv_obj_t *warning_l;
 } objects_t;
@@ -153,7 +170,8 @@ enum ScreensEnum {
     SCREEN_ID_SAMPLE_SETTING_PAGE = 3,
     SCREEN_ID_COMMUNICATE_SETTING_PAGE = 4,
     SCREEN_ID_MOTOR_TEST_SETTING_PAGE = 5,
-    SCREEN_ID_WARNING_PAGE = 6,
+    SCREEN_ID_HISTORICAL_RECORD_PAGE = 6,
+    SCREEN_ID_WARNING_PAGE = 7,
 };
 
 void create_screen_main_page();
@@ -170,6 +188,9 @@ void tick_screen_communicate_setting_page();
 
 void create_screen_motor_test_setting_page();
 void tick_screen_motor_test_setting_page();
+
+void create_screen_historical_record_page();
+void tick_screen_historical_record_page();
 
 void create_screen_warning_page();
 void tick_screen_warning_page();

@@ -1,6 +1,6 @@
 #include "images.h"
 
-const ext_img_desc_t images[12] = {
+const ext_img_desc_t images[15] = {
     { "home", &img_home },
     { "setting7", &img_setting7 },
     { "background1", &img_background1 },
@@ -13,4 +13,7 @@ const ext_img_desc_t images[12] = {
     { "Barrel_Full", &img_barrel_full },
     { "background2", &img_background2 },
     { "sr_back", &img_sr_back },
+    { "power", &img_power },
+    { "reboot", &img_reboot },
+    { "shutdown", &img_shutdown },
 };

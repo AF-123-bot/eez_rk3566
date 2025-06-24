@@ -19,6 +19,9 @@ extern const lv_img_dsc_t img_barrel_empty;
 extern const lv_img_dsc_t img_barrel_full;
 extern const lv_img_dsc_t img_background2;
 extern const lv_img_dsc_t img_sr_back;
+extern const lv_img_dsc_t img_power;
+extern const lv_img_dsc_t img_reboot;
+extern const lv_img_dsc_t img_shutdown;
 
 #ifndef EXT_IMG_DESC_T
 #define EXT_IMG_DESC_T
@@ -28,7 +31,7 @@ typedef struct _ext_img_desc_t {
 } ext_img_desc_t;
 #endif
 
-extern const ext_img_desc_t images[12];
+extern const ext_img_desc_t images[15];
 
 
 #ifdef __cplusplus

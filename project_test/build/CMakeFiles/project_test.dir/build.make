@@ -512,9 +512,48 @@ CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/test_1/lib/ui_image_sr_back.c -o CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.s
 
+CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o: CMakeFiles/project_test.dir/flags.make
+CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o: ../lib/ui_image_shutdown.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o   -c /home/cat/test_1/lib/ui_image_shutdown.c
+
+CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/test_1/lib/ui_image_shutdown.c > CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.i
+
+CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/test_1/lib/ui_image_shutdown.c -o CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.s
+
+CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o: CMakeFiles/project_test.dir/flags.make
+CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o: ../lib/ui_image_reboot.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o   -c /home/cat/test_1/lib/ui_image_reboot.c
+
+CMakeFiles/project_test.dir/lib/ui_image_reboot.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_test.dir/lib/ui_image_reboot.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/test_1/lib/ui_image_reboot.c > CMakeFiles/project_test.dir/lib/ui_image_reboot.c.i
+
+CMakeFiles/project_test.dir/lib/ui_image_reboot.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_test.dir/lib/ui_image_reboot.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/test_1/lib/ui_image_reboot.c -o CMakeFiles/project_test.dir/lib/ui_image_reboot.c.s
+
+CMakeFiles/project_test.dir/lib/ui_image_power.c.o: CMakeFiles/project_test.dir/flags.make
+CMakeFiles/project_test.dir/lib/ui_image_power.c.o: ../lib/ui_image_power.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/project_test.dir/lib/ui_image_power.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/project_test.dir/lib/ui_image_power.c.o   -c /home/cat/test_1/lib/ui_image_power.c
+
+CMakeFiles/project_test.dir/lib/ui_image_power.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_test.dir/lib/ui_image_power.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/test_1/lib/ui_image_power.c > CMakeFiles/project_test.dir/lib/ui_image_power.c.i
+
+CMakeFiles/project_test.dir/lib/ui_image_power.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_test.dir/lib/ui_image_power.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/test_1/lib/ui_image_power.c -o CMakeFiles/project_test.dir/lib/ui_image_power.c.s
+
 CMakeFiles/project_test.dir/lib/actions.c.o: CMakeFiles/project_test.dir/flags.make
 CMakeFiles/project_test.dir/lib/actions.c.o: ../lib/actions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/project_test.dir/lib/actions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/project_test.dir/lib/actions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/project_test.dir/lib/actions.c.o   -c /home/cat/test_1/lib/actions.c
 
 CMakeFiles/project_test.dir/lib/actions.c.i: cmake_force
@@ -527,7 +566,7 @@ CMakeFiles/project_test.dir/lib/actions.c.s: cmake_force
 
 CMakeFiles/project_test.dir/lib/eez-flow.cpp.o: CMakeFiles/project_test.dir/flags.make
 CMakeFiles/project_test.dir/lib/eez-flow.cpp.o: ../lib/eez-flow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/project_test.dir/lib/eez-flow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/project_test.dir/lib/eez-flow.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project_test.dir/lib/eez-flow.cpp.o -c /home/cat/test_1/lib/eez-flow.cpp
 
 CMakeFiles/project_test.dir/lib/eez-flow.cpp.i: cmake_force
@@ -540,7 +579,7 @@ CMakeFiles/project_test.dir/lib/eez-flow.cpp.s: cmake_force
 
 CMakeFiles/project_test.dir/lib/vars.c.o: CMakeFiles/project_test.dir/flags.make
 CMakeFiles/project_test.dir/lib/vars.c.o: ../lib/vars.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/project_test.dir/lib/vars.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/project_test.dir/lib/vars.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/project_test.dir/lib/vars.c.o   -c /home/cat/test_1/lib/vars.c
 
 CMakeFiles/project_test.dir/lib/vars.c.i: cmake_force
@@ -588,6 +627,9 @@ project_test_OBJECTS = \
 "CMakeFiles/project_test.dir/lib/ui_image_warning_background.c.o" \
 "CMakeFiles/project_test.dir/lib/ui_image_warning_icon.c.o" \
 "CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.o" \
+"CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o" \
+"CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o" \
+"CMakeFiles/project_test.dir/lib/ui_image_power.c.o" \
 "CMakeFiles/project_test.dir/lib/actions.c.o" \
 "CMakeFiles/project_test.dir/lib/eez-flow.cpp.o" \
 "CMakeFiles/project_test.dir/lib/vars.c.o"
@@ -630,13 +672,16 @@ project_test: CMakeFiles/project_test.dir/lib/ui_image_setting7.c.o
 project_test: CMakeFiles/project_test.dir/lib/ui_image_warning_background.c.o
 project_test: CMakeFiles/project_test.dir/lib/ui_image_warning_icon.c.o
 project_test: CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.o
+project_test: CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o
+project_test: CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o
+project_test: CMakeFiles/project_test.dir/lib/ui_image_power.c.o
 project_test: CMakeFiles/project_test.dir/lib/actions.c.o
 project_test: CMakeFiles/project_test.dir/lib/eez-flow.cpp.o
 project_test: CMakeFiles/project_test.dir/lib/vars.c.o
 project_test: CMakeFiles/project_test.dir/build.make
 project_test: lib/liblvgl.a
 project_test: CMakeFiles/project_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Linking CXX executable project_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable project_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/project_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

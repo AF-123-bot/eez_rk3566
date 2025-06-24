@@ -10,18 +10,18 @@ static lv_display_t * hal_init(int32_t w, int32_t h);
 void update_time_cb(lv_timer_t *timer);
 void lvgl_data_init(void);
 
+bool sample_motor_status = true;
+bool rotate_motor_status = true;
 
 int main() {
     setenv("SDL_VIDEODRIVER", "x11", 1);
     setenv("SDL_RENDER_DRIVER", "software", 1);
 
     int fd = open_serial("/dev/ttyS3", 115200);
-    if (fd < 0) return 1;
-    printf("串口已开启。\n");
+    if (fd < 0) rotate_motor_status = false;
 
-    if (gpio_init(&dir_gpio, "gpiochip1", 8) < 0) return -1;  // GPIO1_B0 direction
-    if (gpio_init(&en_gpio, "gpiochip1", 4) < 0) return -1;   // GPIO1_A4 enable
-    printf("采样电机已启动\n");
+    if (gpio_init(&dir_gpio, "gpiochip1", 8) < 0) sample_motor_status = false;
+    if (gpio_init(&en_gpio, "gpiochip1", 4) < 0) sample_motor_status = false;
 
     lv_init();
     printf("LVGL 初始化完成\n");
@@ -101,30 +101,40 @@ void update_time_cb(lv_timer_t *timer)
     int year = time_info->tm_year + 1900;
 
     // 只在变化时更新变量，避免闪烁
-    if (hour != last_hour) {
-        set_var_time_hour(hour);
-        last_hour = hour;
-    }
-    if (min != last_min) {
-        set_var_time_min(min);
-        last_min = min;
-    }
-    if (day != last_day) {
-        set_var_date_day(day);
+    if (year != last_year || month != last_month || day != last_day) 
+    {
+        char date_buf[32];
+        snprintf(date_buf, sizeof(date_buf), "%04d . %02d . %02d", year, month, day);
+
+        lv_label_set_text(objects.date, date_buf);
+
+        last_year = year;
+        last_month = month;
         last_day = day;
     }
-    if (month != last_month) {
-        set_var_date_month(month);
-        last_month = month;
-    }
-    if (year != last_year) {
-        set_var_date_year(year);
-        last_year = year;
+    if (hour != last_hour || min != last_min) 
+    {
+        char time_buf[16];
+        snprintf(time_buf, sizeof(time_buf), "%02d : %02d", hour, min);
+        lv_label_set_text(objects.time, time_buf);
+        last_hour = hour;
+        last_min = min;
     }
 }
 
 void lvgl_data_init(void)
 {
+    //确定电机状态
+    if(sample_motor_status == false)    //采样电机故障
+    {
+        lv_obj_set_style_text_color(objects.sample_motor_status, lv_color_hex(0xFF0000), 0);
+        lv_label_set_text(objects.sample_motor_status,"故障");
+    }
+    if(rotate_motor_status == false)    //旋转电机故障
+    {
+        lv_obj_set_style_text_color(objects.rotate_motor_status, lv_color_hex(0xFF0000), 0);
+        lv_label_set_text(objects.rotate_motor_status,"故障");
+    }
     //读取shift页面上一次保存的数据
     load_shift_data(&start_time_1, &start_time_2, &start_time_3, &stop_time_1, &stop_time_2, &stop_time_3, &sample_times_1, &sample_times_2, &sample_times_3);
     set_var_start_time_1(start_time_1);

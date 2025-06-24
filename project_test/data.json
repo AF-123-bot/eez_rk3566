@@ -9,13 +9,13 @@
 		"sample_times_1":	0,
 		"sample_times_2":	0,
 		"sample_times_3":	0,
-		"motor_cw_seconds":	3,
-		"motor_ccw_seconds":	2,
-		"motor_stop_seconds":	1,
+		"motor_cw_seconds":	0,
+		"motor_ccw_seconds":	0,
+		"motor_stop_seconds":	0,
 		"address":	"",
 		"gateway":	"",
 		"dns":	"",
-		"rotational_speed":	400
+		"rotational_speed":	0
 	},
 	"Monday":	{
 		"sample_number":	0

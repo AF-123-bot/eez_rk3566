@@ -58,6 +58,9 @@ add_executable(${PROJECT_NAME}
   lib/ui_image_warning_background.c
   lib/ui_image_warning_icon.c
   lib/ui_image_sr_back.c
+  lib/ui_image_shutdown.c
+  lib/ui_image_reboot.c
+  lib/ui_image_power.c
 
   lib/actions.c
   lib/eez-flow.cpp

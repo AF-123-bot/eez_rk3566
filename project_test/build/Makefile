@@ -977,6 +977,60 @@ lib/ui_image_net.c.s:
 	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_net.c.s
 .PHONY : lib/ui_image_net.c.s
 
+lib/ui_image_power.o: lib/ui_image_power.c.o
+
+.PHONY : lib/ui_image_power.o
+
+# target to build an object file
+lib/ui_image_power.c.o:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.o
+.PHONY : lib/ui_image_power.c.o
+
+lib/ui_image_power.i: lib/ui_image_power.c.i
+
+.PHONY : lib/ui_image_power.i
+
+# target to preprocess a source file
+lib/ui_image_power.c.i:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.i
+.PHONY : lib/ui_image_power.c.i
+
+lib/ui_image_power.s: lib/ui_image_power.c.s
+
+.PHONY : lib/ui_image_power.s
+
+# target to generate assembly for a file
+lib/ui_image_power.c.s:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.s
+.PHONY : lib/ui_image_power.c.s
+
+lib/ui_image_reboot.o: lib/ui_image_reboot.c.o
+
+.PHONY : lib/ui_image_reboot.o
+
+# target to build an object file
+lib/ui_image_reboot.c.o:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o
+.PHONY : lib/ui_image_reboot.c.o
+
+lib/ui_image_reboot.i: lib/ui_image_reboot.c.i
+
+.PHONY : lib/ui_image_reboot.i
+
+# target to preprocess a source file
+lib/ui_image_reboot.c.i:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.i
+.PHONY : lib/ui_image_reboot.c.i
+
+lib/ui_image_reboot.s: lib/ui_image_reboot.c.s
+
+.PHONY : lib/ui_image_reboot.s
+
+# target to generate assembly for a file
+lib/ui_image_reboot.c.s:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.s
+.PHONY : lib/ui_image_reboot.c.s
+
 lib/ui_image_setting1.o: lib/ui_image_setting1.c.o
 
 .PHONY : lib/ui_image_setting1.o
@@ -1030,6 +1084,33 @@ lib/ui_image_setting7.s: lib/ui_image_setting7.c.s
 lib/ui_image_setting7.c.s:
 	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting7.c.s
 .PHONY : lib/ui_image_setting7.c.s
+
+lib/ui_image_shutdown.o: lib/ui_image_shutdown.c.o
+
+.PHONY : lib/ui_image_shutdown.o
+
+# target to build an object file
+lib/ui_image_shutdown.c.o:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o
+.PHONY : lib/ui_image_shutdown.c.o
+
+lib/ui_image_shutdown.i: lib/ui_image_shutdown.c.i
+
+.PHONY : lib/ui_image_shutdown.i
+
+# target to preprocess a source file
+lib/ui_image_shutdown.c.i:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.i
+.PHONY : lib/ui_image_shutdown.c.i
+
+lib/ui_image_shutdown.s: lib/ui_image_shutdown.c.s
+
+.PHONY : lib/ui_image_shutdown.s
+
+# target to generate assembly for a file
+lib/ui_image_shutdown.c.s:
+	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.s
+.PHONY : lib/ui_image_shutdown.c.s
 
 lib/ui_image_sr_back.o: lib/ui_image_sr_back.c.o
 
@@ -1348,12 +1429,21 @@ help:
 	@echo "... lib/ui_image_net.o"
 	@echo "... lib/ui_image_net.i"
 	@echo "... lib/ui_image_net.s"
+	@echo "... lib/ui_image_power.o"
+	@echo "... lib/ui_image_power.i"
+	@echo "... lib/ui_image_power.s"
+	@echo "... lib/ui_image_reboot.o"
+	@echo "... lib/ui_image_reboot.i"
+	@echo "... lib/ui_image_reboot.s"
 	@echo "... lib/ui_image_setting1.o"
 	@echo "... lib/ui_image_setting1.i"
 	@echo "... lib/ui_image_setting1.s"
 	@echo "... lib/ui_image_setting7.o"
 	@echo "... lib/ui_image_setting7.i"
 	@echo "... lib/ui_image_setting7.s"
+	@echo "... lib/ui_image_shutdown.o"
+	@echo "... lib/ui_image_shutdown.i"
+	@echo "... lib/ui_image_shutdown.s"
 	@echo "... lib/ui_image_sr_back.o"
 	@echo "... lib/ui_image_sr_back.i"
 	@echo "... lib/ui_image_sr_back.s"
