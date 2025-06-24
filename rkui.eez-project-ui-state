@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[rkui.eez-project]:/userPages/0",
+    "selectedUserPageObject": "[rkui.eez-project]:/userPages/4",
     "selectedActionObject": "[rkui.eez-project]:/actions/5",
     "selectedGlobalVariableObject": "[rkui.eez-project]:/variables/globalVariables/16",
     "selectedStyleObject": "[rkui.eez-project]:/lvglStyles/styles/0",
@@ -234,10 +234,10 @@
                 {
                   "type": "tab",
                   "id": "#a9dd9c5f-de32-4a7a-98af-2c437a0b24fa",
-                  "name": "Main_page",
+                  "name": "Motor_Test_setting_page",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[rkui.eez-project]:/userPages/0",
+                    "objectPath": "[rkui.eez-project]:/userPages/4",
                     "permanent": false
                   },
                   "icon": "svg:page"
@@ -1364,11 +1364,11 @@
             "3": {},
             "4": {},
             "5": {},
-            "6": {},
-            "7": {},
-            "8": {
+            "6": {
               "$selected": true
-            }
+            },
+            "7": {},
+            "8": {}
           },
           "5": {},
           "7": {}
