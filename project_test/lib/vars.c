@@ -61,16 +61,11 @@ void set_var_gateway(const char *value) {
 }
 
 int32_t get_var_rotational_speed() {
-    const char *text = lv_textarea_get_text(objects.input_rotational_speed);
-    int32_t rotational_speed = atoi(text);
     return rotational_speed;
 }
 
 void set_var_rotational_speed(int32_t value) {
     rotational_speed = value;
-    char buf[16];
-    snprintf(buf, sizeof(buf), "%d", rotational_speed);
-    lv_textarea_set_text(objects.input_rotational_speed, buf);
 }
 
 int32_t get_var_start_time_1() {
@@ -146,42 +141,27 @@ void set_var_stop_time_3(int32_t value) {
 }
 
 int32_t get_var_sample_motor_ccw_seconds() {
-    const char *text = lv_textarea_get_text(objects.motor_ccw_seconds);
-    int32_t sample_motor_ccw_seconds = atoi(text);
     return sample_motor_ccw_seconds;
 }
 
 void set_var_sample_motor_ccw_seconds(int32_t value) {
     sample_motor_ccw_seconds = value;
-    char buf[16];
-    snprintf(buf, sizeof(buf), "%d", sample_motor_ccw_seconds);
-    lv_textarea_set_text(objects.motor_ccw_seconds, buf);
 }
 
 int32_t get_var_sample_motor_cw_seconds() {
-    const char *text = lv_textarea_get_text(objects.motor_cw_seconds);
-    int32_t sample_motor_cw_seconds = atoi(text);
     return sample_motor_cw_seconds;
 }
 
 void set_var_sample_motor_cw_seconds(int32_t value) {
     sample_motor_cw_seconds = value;
-    char buf[16];
-    snprintf(buf, sizeof(buf), "%d", sample_motor_cw_seconds);
-    lv_textarea_set_text(objects.motor_cw_seconds, buf);
 }
 
 int32_t get_var_sample_motor_stop_seconds() {
-    const char *text = lv_textarea_get_text(objects.motor_stop_seconds);
-    int32_t sample_motor_stop_seconds = atoi(text);
     return sample_motor_stop_seconds;
 }
 
 void set_var_sample_motor_stop_seconds(int32_t value) {
     sample_motor_stop_seconds = value;
-    char buf[16];
-    snprintf(buf, sizeof(buf), "%d", sample_motor_stop_seconds);
-    lv_textarea_set_text(objects.motor_stop_seconds, buf);
 }
 
 int32_t get_var_sample_times_1() {

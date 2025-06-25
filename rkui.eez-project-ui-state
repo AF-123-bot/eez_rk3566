@@ -1,14 +1,13 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[rkui.eez-project]:/userPages/0",
+    "selectedUserPageObject": "[rkui.eez-project]:/userPages/5",
     "selectedActionObject": "[rkui.eez-project]:/actions/5",
-    "selectedGlobalVariableObject": "[rkui.eez-project]:/variables/globalVariables/-1",
     "selectedStyleObject": "[rkui.eez-project]:/lvglStyles/styles/0",
-    "selectedFontObject": "[rkui.eez-project]:/fonts/0",
+    "selectedFontObject": "[rkui.eez-project]:/fonts/1",
     "selectedBitmapObject": "[rkui.eez-project]:/bitmaps/14",
     "selectedLvglGroupObject": "[rkui.eez-project]:/lvglGroups/groups/0",
     "subnavigationSelectedItems": {
-      "variables-tab/sub-navigation/selected-item": "Actions"
+      "variables-tab/sub-navigation/selected-item": "Widgets"
     }
   },
   "layoutModel": {
@@ -29,7 +28,7 @@
           },
           {
             "type": "border",
-            "selected": 2,
+            "selected": 1,
             "size": 240,
             "location": "right",
             "children": [
@@ -205,17 +204,39 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 46.1213588140065,
-              "selected": 3,
+              "selected": 2,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
                 {
                   "type": "tab",
-                  "id": "#d10421d7-d52c-439f-87ac-2bdf1fda18a2",
-                  "name": "Shift_setting_page",
+                  "id": "#9cf64c52-5fd2-485d-a462-5fc8a0ae00e7",
+                  "name": "36",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[rkui.eez-project]:/userPages/1",
+                    "objectPath": "[rkui.eez-project]:/fonts/2",
+                    "permanent": false
+                  },
+                  "icon": "material:font_download"
+                },
+                {
+                  "type": "tab",
+                  "id": "#5e6d4fae-b543-4d88-b190-d310361fdf08",
+                  "name": "24",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[rkui.eez-project]:/fonts/1",
+                    "permanent": true
+                  },
+                  "icon": "material:font_download"
+                },
+                {
+                  "type": "tab",
+                  "id": "#d10421d7-d52c-439f-87ac-2bdf1fda18a2",
+                  "name": "Historical_record_page",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[rkui.eez-project]:/userPages/5",
                     "permanent": false
                   },
                   "icon": "svg:page"
@@ -1278,7 +1299,7 @@
           "x": -345.9800631809214,
           "y": -197.9385054252358
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1301,16 +1322,19 @@
               "0": {}
             }
           },
-          "5": {}
+          "5": {},
+          "6": {
+            "$selected": true
+          }
         },
         "1": {}
       },
       "transform": {
         "translate": {
-          "x": -245.36652628580725,
-          "y": -228.64583333333326
+          "x": -341.3665568033854,
+          "y": -248.64583333333326
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1350,7 +1374,7 @@
           "x": -324.4095218912762,
           "y": -261.6751651743571
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1419,7 +1443,7 @@
           "x": -149.22455311205113,
           "y": -286.7240063509688
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1435,20 +1459,15 @@
             "4": {}
           },
           "4": {},
-          "7": {
-            "0": {
-              "0": {}
-            },
-            "1": {}
-          }
+          "7": {}
         }
       },
       "transform": {
         "translate": {
-          "x": -302.4488489879261,
-          "y": -259.57984538685184
+          "x": -266.1245614495658,
+          "y": -249.46770622222357
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1591,7 +1610,7 @@
           "x": -535.2000122070312,
           "y": -371.9999694824219
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1617,10 +1636,11 @@
   "lvglState": "DEFAULT",
   "lvglExpandedPropertiesGroup": [
     "TEXT",
-    "BACKGROUND"
+    "BACKGROUND",
+    "LAYOUT"
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
-  "flowZoom": 0.67,
+  "flowZoom": 0.5,
   "implementationLanguage": "C"
 }

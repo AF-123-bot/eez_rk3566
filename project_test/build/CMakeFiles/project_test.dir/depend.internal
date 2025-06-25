@@ -276,6 +276,7 @@ CMakeFiles/project_test.dir/lib/actions.c.o
  ../lvgl/src/widgets/win/lv_win_private.h
  /home/cat/test_1/lib/actions.c
  /home/cat/test_1/lib/actions.h
+ /home/cat/test_1/lib/fonts.h
  /home/cat/test_1/lib/screens.h
  /home/cat/test_1/lib/vars.h
 CMakeFiles/project_test.dir/lib/images.c.o
