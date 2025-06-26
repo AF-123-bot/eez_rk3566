@@ -122,7 +122,6 @@ typedef struct _objects_t {
     lv_obj_t *obj42;
     lv_obj_t *obj43;
     lv_obj_t *label_successful_shift;
-    lv_obj_t *keyboard_auto;
     lv_obj_t *title_4;
     lv_obj_t *button_left_auto;
     lv_obj_t *obj44;
@@ -148,9 +147,6 @@ typedef struct _objects_t {
     lv_obj_t *title_6;
     lv_obj_t *button_left_test_1;
     lv_obj_t *obj51;
-    lv_obj_t *input_main_test_1;
-    lv_obj_t *keyboard_test_1;
-    lv_obj_t *label_successful_test_1;
     lv_obj_t *sampling_frequency_container;
     lv_obj_t *failure_number_container;
     lv_obj_t *obj52;
