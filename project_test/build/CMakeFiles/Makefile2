@@ -44,16 +44,16 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cat/test_1
+CMAKE_SOURCE_DIR = /home/cat/eez_rk3566
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cat/test_1/build
+CMAKE_BINARY_DIR = /home/cat/eez_rk3566/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/project_test.dir/all
+all: CMakeFiles/eez_rk3566.dir/all
 all: lvgl/all
 
 .PHONY : all
@@ -64,7 +64,7 @@ preinstall: lvgl/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/project_test.dir/clean
+clean: CMakeFiles/eez_rk3566.dir/clean
 clean: lvgl/clean
 
 .PHONY : clean
@@ -94,31 +94,31 @@ lvgl/clean: lvgl/CMakeFiles/lvgl.dir/clean
 .PHONY : lvgl/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/project_test.dir
+# Target rules for target CMakeFiles/eez_rk3566.dir
 
 # All Build rule for target.
-CMakeFiles/project_test.dir/all: lvgl/CMakeFiles/lvgl.dir/all
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/depend
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=95,96,97,98,99,100 "Built target project_test"
-.PHONY : CMakeFiles/project_test.dir/all
+CMakeFiles/eez_rk3566.dir/all: lvgl/CMakeFiles/lvgl.dir/all
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/depend
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/eez_rk3566/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target eez_rk3566"
+.PHONY : CMakeFiles/eez_rk3566.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/project_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 48
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/project_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
-.PHONY : CMakeFiles/project_test.dir/rule
+CMakeFiles/eez_rk3566.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 48
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/eez_rk3566.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
+.PHONY : CMakeFiles/eez_rk3566.dir/rule
 
 # Convenience name for target.
-project_test: CMakeFiles/project_test.dir/rule
+eez_rk3566: CMakeFiles/eez_rk3566.dir/rule
 
-.PHONY : project_test
+.PHONY : eez_rk3566
 
 # clean rule for target.
-CMakeFiles/project_test.dir/clean:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/clean
-.PHONY : CMakeFiles/project_test.dir/clean
+CMakeFiles/eez_rk3566.dir/clean:
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/clean
+.PHONY : CMakeFiles/eez_rk3566.dir/clean
 
 #=============================================================================
 # Target rules for target lvgl/CMakeFiles/lvgl_demos.dir
@@ -127,14 +127,14 @@ CMakeFiles/project_test.dir/clean:
 lvgl/CMakeFiles/lvgl_demos.dir/all: lvgl/CMakeFiles/lvgl.dir/all
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_demos.dir/build.make lvgl/CMakeFiles/lvgl_demos.dir/depend
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_demos.dir/build.make lvgl/CMakeFiles/lvgl_demos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59 "Built target lvgl_demos"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/eez_rk3566/build/CMakeFiles --progress-num=49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65 "Built target lvgl_demos"
 .PHONY : lvgl/CMakeFiles/lvgl_demos.dir/all
 
 # Build rule for subdir invocation for target.
 lvgl/CMakeFiles/lvgl_demos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 60
 	$(MAKE) -f CMakeFiles/Makefile2 lvgl/CMakeFiles/lvgl_demos.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
 .PHONY : lvgl/CMakeFiles/lvgl_demos.dir/rule
 
 # Convenience name for target.
@@ -154,14 +154,14 @@ lvgl/CMakeFiles/lvgl_demos.dir/clean:
 lvgl/CMakeFiles/lvgl_examples.dir/all: lvgl/CMakeFiles/lvgl.dir/all
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_examples.dir/build.make lvgl/CMakeFiles/lvgl_examples.dir/depend
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_examples.dir/build.make lvgl/CMakeFiles/lvgl_examples.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87 "Built target lvgl_examples"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/eez_rk3566/build/CMakeFiles --progress-num=66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93 "Built target lvgl_examples"
 .PHONY : lvgl/CMakeFiles/lvgl_examples.dir/all
 
 # Build rule for subdir invocation for target.
 lvgl/CMakeFiles/lvgl_examples.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 70
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 71
 	$(MAKE) -f CMakeFiles/Makefile2 lvgl/CMakeFiles/lvgl_examples.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
 .PHONY : lvgl/CMakeFiles/lvgl_examples.dir/rule
 
 # Convenience name for target.
@@ -181,14 +181,14 @@ lvgl/CMakeFiles/lvgl_examples.dir/clean:
 lvgl/CMakeFiles/lvgl_thorvg.dir/all: lvgl/CMakeFiles/lvgl.dir/all
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_thorvg.dir/build.make lvgl/CMakeFiles/lvgl_thorvg.dir/depend
 	$(MAKE) -f lvgl/CMakeFiles/lvgl_thorvg.dir/build.make lvgl/CMakeFiles/lvgl_thorvg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=88,89,90,91,92,93,94 "Built target lvgl_thorvg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/eez_rk3566/build/CMakeFiles --progress-num=94,95,96,97,98,99,100 "Built target lvgl_thorvg"
 .PHONY : lvgl/CMakeFiles/lvgl_thorvg.dir/all
 
 # Build rule for subdir invocation for target.
 lvgl/CMakeFiles/lvgl_thorvg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 50
 	$(MAKE) -f CMakeFiles/Makefile2 lvgl/CMakeFiles/lvgl_thorvg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
 .PHONY : lvgl/CMakeFiles/lvgl_thorvg.dir/rule
 
 # Convenience name for target.
@@ -208,14 +208,14 @@ lvgl/CMakeFiles/lvgl_thorvg.dir/clean:
 lvgl/CMakeFiles/lvgl.dir/all:
 	$(MAKE) -f lvgl/CMakeFiles/lvgl.dir/build.make lvgl/CMakeFiles/lvgl.dir/depend
 	$(MAKE) -f lvgl/CMakeFiles/lvgl.dir/build.make lvgl/CMakeFiles/lvgl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/test_1/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42 "Built target lvgl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/eez_rk3566/build/CMakeFiles --progress-num=6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48 "Built target lvgl"
 .PHONY : lvgl/CMakeFiles/lvgl.dir/all
 
 # Build rule for subdir invocation for target.
 lvgl/CMakeFiles/lvgl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 43
 	$(MAKE) -f CMakeFiles/Makefile2 lvgl/CMakeFiles/lvgl.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
 .PHONY : lvgl/CMakeFiles/lvgl.dir/rule
 
 # Convenience name for target.

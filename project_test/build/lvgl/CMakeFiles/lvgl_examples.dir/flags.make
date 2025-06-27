@@ -6,5 +6,5 @@ C_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu11
 
 C_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
-C_INCLUDES = -isystem /home/cat/test_1/lvgl/examples -isystem /home/cat/test_1/lvgl -isystem /home/cat/test_1/build/lvgl 
+C_INCLUDES = -isystem /home/cat/eez_rk3566/lvgl/examples -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 

@@ -2088,12 +2088,12 @@ void create_screen_sample_setting_page() {
             // tips_sample
             lv_obj_t *obj = lv_label_create(parent_obj);
             objects.tips_sample = obj;
-            lv_obj_set_pos(obj, 228, 549);
+            lv_obj_set_pos(obj, 354, 489);
             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
             lv_obj_set_style_text_font(obj, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_text_color(obj, lv_color_hex(0xffffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_label_set_text(obj, "友情提示：根据经验，\n手动清灰大约需要30s");
+            lv_label_set_text(obj, "手动清灰已执行3秒\n推荐时间为30秒");
         }
     }
     
@@ -3044,8 +3044,8 @@ void create_screen_historical_record_page() {
             // failure_number_container
             lv_obj_t *obj = lv_obj_create(parent_obj);
             objects.failure_number_container = obj;
-            lv_obj_set_pos(obj, 565, 215);
-            lv_obj_set_size(obj, 300, 500);
+            lv_obj_set_pos(obj, 165, 215);
+            lv_obj_set_size(obj, 800, 500);
             lv_obj_set_style_pad_left(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_pad_top(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_pad_right(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -3073,6 +3073,13 @@ void create_screen_historical_record_page() {
             lv_obj_set_style_text_font(obj, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_text_color(obj, lv_color_hex(0xffffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_label_set_text(obj, "故障次数");
+        }
+        {
+            // tem_chart
+            lv_obj_t *obj = lv_chart_create(parent_obj);
+            objects.tem_chart = obj;
+            lv_obj_set_pos(obj, 165, 215);
+            lv_obj_set_size(obj, 800, 500);
         }
     }
     
@@ -3192,7 +3199,7 @@ void ui_create_groups() {
 }
 
 static const char *screen_names[] = { "Main_page", "Shift_setting_page", "Sample_setting_page", "Communicate_setting_page", "Motor_Test_setting_page", "Historical_record_page", "warning_page" };
-static const char *object_names[] = { "main_page", "shift_setting_page", "sample_setting_page", "communicate_setting_page", "motor_test_setting_page", "historical_record_page", "warning_page", "setting8", "btn_factory_reset", "btn_user_confuse_1", "btn_user_confuse_2", "btn_user_reboot", "btn_user_shutdown", "btn_user_confuse", "btn_user", "btn_start_all", "obj0", "btn_save_shift_setting", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", "obj7", "obj8", "obj9", "obj10", "motor_ccw_seconds", "motor_cw_seconds", "motor_stop_seconds", "btn_save_sample_setting", "btn_manual_take_ccw", "btn_manual_take_cw", "btn_auto_take_cw", "btn_sample_stop", "obj11", "obj12", "obj13", "obj14", "obj15", "obj16", "input_address", "input_gateway", "input_dns", "input_phonenum", "btn_save_communicate_setting", "obj17", "obj18", "obj19", "obj20", "obj21", "obj22", "btn_sample_motor_cw", "btn_sample_motor_stop", "btn_sample_motor_ccw", "btn_rotate_motor_cw", "btn_rotate_motor_ccw", "btn_rotate_motor_stop", "input_rotational_speed", "btn_save_motor_test_setting", "obj23", "obj24", "obj25", "obj26", "obj27", "btn_warning_ok", "main1", "obj28", "information", "obj29", "temperature", "obj30", "obj31", "time", "date", "obj32", "obj33", "sample_motor_status", "rotate_motor_status", "barrel_1", "obj34", "barrel_2", "obj35", "barrel_3", "obj36", "main_label", "default_sure_container", "obj37", "sr_sure_container", "sr_label", "title_2", "button_left_shift", "obj38", "input_main_shift", "obj39", "obj40", "obj41", "input_start_time1", "input_start_time2", "input_stop_time3", "input_start_time3", "input_stop_time2", "input_stop_time1", "input_sample_times3", "input_sample_times2", "input_sample_times1", "obj42", "obj43", "obj44", "label_successful_shift", "title_4", "button_left_auto", "obj45", "input_auto_sampling", "obj46", "keyboard_sample", "obj47", "label_successful_sample", "ccw_counting_time", "cw_counting_time", "tips_sample", "title_3", "button_left_communication", "obj48", "obj49", "input_main_communication", "keyboard_communication", "label_successful_communication", "title_1", "button_left_test", "obj50", "input_main_test", "label_successful_test", "keyboard_test", "obj51", "title_6", "button_left_test_1", "obj52", "sampling_frequency_container", "failure_number_container", "obj53", "obj54", "title_5", "warning_l" };
+static const char *object_names[] = { "main_page", "shift_setting_page", "sample_setting_page", "communicate_setting_page", "motor_test_setting_page", "historical_record_page", "warning_page", "setting8", "btn_factory_reset", "btn_user_confuse_1", "btn_user_confuse_2", "btn_user_reboot", "btn_user_shutdown", "btn_user_confuse", "btn_user", "btn_start_all", "obj0", "btn_save_shift_setting", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", "obj7", "obj8", "obj9", "obj10", "motor_ccw_seconds", "motor_cw_seconds", "motor_stop_seconds", "btn_save_sample_setting", "btn_manual_take_ccw", "btn_manual_take_cw", "btn_auto_take_cw", "btn_sample_stop", "obj11", "obj12", "obj13", "obj14", "obj15", "obj16", "input_address", "input_gateway", "input_dns", "input_phonenum", "btn_save_communicate_setting", "obj17", "obj18", "obj19", "obj20", "obj21", "obj22", "btn_sample_motor_cw", "btn_sample_motor_stop", "btn_sample_motor_ccw", "btn_rotate_motor_cw", "btn_rotate_motor_ccw", "btn_rotate_motor_stop", "input_rotational_speed", "btn_save_motor_test_setting", "obj23", "obj24", "obj25", "obj26", "obj27", "btn_warning_ok", "main1", "obj28", "information", "obj29", "temperature", "obj30", "obj31", "time", "date", "obj32", "obj33", "sample_motor_status", "rotate_motor_status", "barrel_1", "obj34", "barrel_2", "obj35", "barrel_3", "obj36", "main_label", "default_sure_container", "obj37", "sr_sure_container", "sr_label", "title_2", "button_left_shift", "obj38", "input_main_shift", "obj39", "obj40", "obj41", "input_start_time1", "input_start_time2", "input_stop_time3", "input_start_time3", "input_stop_time2", "input_stop_time1", "input_sample_times3", "input_sample_times2", "input_sample_times1", "obj42", "obj43", "obj44", "label_successful_shift", "title_4", "button_left_auto", "obj45", "input_auto_sampling", "obj46", "keyboard_sample", "obj47", "label_successful_sample", "ccw_counting_time", "cw_counting_time", "tips_sample", "title_3", "button_left_communication", "obj48", "obj49", "input_main_communication", "keyboard_communication", "label_successful_communication", "title_1", "button_left_test", "obj50", "input_main_test", "label_successful_test", "keyboard_test", "obj51", "title_6", "button_left_test_1", "obj52", "sampling_frequency_container", "failure_number_container", "obj53", "obj54", "tem_chart", "title_5", "warning_l" };
 static const char *group_names[] = { "left_button" };
 static const char *style_names[] = { "font2" };
 

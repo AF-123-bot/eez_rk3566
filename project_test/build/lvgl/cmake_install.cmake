@@ -1,4 +1,4 @@
-# Install script for directory: /home/cat/test_1/lvgl
+# Install script for directory: /home/cat/eez_rk3566/lvgl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,7 +46,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/test_1/lvgl/src" FILES_MATCHING REGEX "/[^/]*\\.h$")
+file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/eez_rk3566/lvgl/src" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,9 +59,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
 file(INSTALL DESTINATION "/usr/local/include/lvgl" TYPE FILE FILES
-    "/home/cat/test_1/lvgl/lv_version.h"
-    "/home/cat/test_1/lvgl/lvgl.h"
-    "/home/cat/test_1/lv_conf.h"
+    "/home/cat/eez_rk3566/lvgl/lv_version.h"
+    "/home/cat/eez_rk3566/lvgl/lvgl.h"
+    "/home/cat/eez_rk3566/lv_conf.h"
     )
 endif()
 
@@ -74,7 +74,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/test_1/lvgl/examples" FILES_MATCHING REGEX "/[^/]*\\.h$")
+file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/eez_rk3566/lvgl/examples" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -86,58 +86,58 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/test_1/lvgl/demos" FILES_MATCHING REGEX "/[^/]*\\.h$")
+file(INSTALL DESTINATION "/usr/local/include/lvgl/" TYPE DIRECTORY FILES "/home/cat/eez_rk3566/lvgl/demos" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/cat/test_1/build/lvgl/lvgl.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/cat/eez_rk3566/build/lvgl/lvgl.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/test_1/build/lib/liblvgl.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/eez_rk3566/build/lib/liblvgl.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lvgl" TYPE FILE FILES
-    "/home/cat/test_1/lvgl/lv_version.h"
-    "/home/cat/test_1/lvgl/lvgl.h"
-    "/home/cat/test_1/lv_conf.h"
+    "/home/cat/eez_rk3566/lvgl/lv_version.h"
+    "/home/cat/eez_rk3566/lvgl/lvgl.h"
+    "/home/cat/eez_rk3566/lv_conf.h"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/test_1/build/lib/liblvgl_thorvg.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/eez_rk3566/build/lib/liblvgl_thorvg.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lvgl" TYPE FILE FILES
-    "/home/cat/test_1/lvgl/lv_version.h"
-    "/home/cat/test_1/lvgl/lvgl.h"
-    "/home/cat/test_1/lv_conf.h"
+    "/home/cat/eez_rk3566/lvgl/lv_version.h"
+    "/home/cat/eez_rk3566/lvgl/lvgl.h"
+    "/home/cat/eez_rk3566/lv_conf.h"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/test_1/build/lib/liblvgl_demos.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/eez_rk3566/build/lib/liblvgl_demos.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lvgl" TYPE FILE FILES
-    "/home/cat/test_1/lvgl/lv_version.h"
-    "/home/cat/test_1/lvgl/lvgl.h"
-    "/home/cat/test_1/lv_conf.h"
+    "/home/cat/eez_rk3566/lvgl/lv_version.h"
+    "/home/cat/eez_rk3566/lvgl/lvgl.h"
+    "/home/cat/eez_rk3566/lv_conf.h"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/test_1/build/lib/liblvgl_examples.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cat/eez_rk3566/build/lib/liblvgl_examples.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lvgl" TYPE FILE FILES
-    "/home/cat/test_1/lvgl/lv_version.h"
-    "/home/cat/test_1/lvgl/lvgl.h"
-    "/home/cat/test_1/lv_conf.h"
+    "/home/cat/eez_rk3566/lvgl/lv_version.h"
+    "/home/cat/eez_rk3566/lvgl/lvgl.h"
+    "/home/cat/eez_rk3566/lv_conf.h"
     )
 endif()
 

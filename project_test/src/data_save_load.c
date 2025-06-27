@@ -1,7 +1,11 @@
 #include "data_save_load.h"
+#include "screens.h"
+#include "actions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <cjson/cJSON.h>
+
+extern objects_t objects;
 
 void save_shift_data(
     int32_t start_time_1,
@@ -14,7 +18,7 @@ void save_shift_data(
     int32_t sample_times_2,
     int32_t sample_times_3)
 {
-    const char *filepath = "/home/cat/test_1/data.json";
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
     char *file_content = NULL;
     long filesize = 0;
@@ -84,8 +88,9 @@ void load_shift_data(
     int32_t *sample_times_1,
     int32_t *sample_times_2,
     int32_t *sample_times_3
-) {
-    FILE *fp = fopen("/home/cat/test_1/data.json", "r");
+) 
+{
+    FILE *fp = fopen("/home/cat/eez_rk3566/data.json", "r");
     if (!fp) {
         perror("无法打开文件");
         return;
@@ -132,7 +137,6 @@ void load_shift_data(
     *sample_times_2 = (int32_t)(cJSON_GetObjectItem(last_data, "sample_times_2")->valuedouble);
     *sample_times_3 = (int32_t)(cJSON_GetObjectItem(last_data, "sample_times_3")->valuedouble);
 
-
     cJSON_Delete(root);
 }
 
@@ -140,8 +144,9 @@ void save_sample_data(
     int32_t motor_stop_seconds,
     int32_t motor_cw_seconds,
     int32_t motor_ccw_seconds
-) {
-    FILE *fp = fopen("/home/cat/test_1/data.json", "r");
+) 
+{
+    FILE *fp = fopen("/home/cat/eez_rk3566/data.json", "r");
     cJSON *root = NULL;
     if (fp) {
         fseek(fp, 0, SEEK_END);
@@ -172,7 +177,7 @@ void save_sample_data(
     cJSON_ReplaceItemInObject(last_data, "motor_stop_seconds", cJSON_CreateNumber(motor_stop_seconds));
 
     char *json_str = cJSON_Print(root);
-    fp = fopen("/home/cat/test_1/data.json", "w");
+    fp = fopen("/home/cat/eez_rk3566/data.json", "w");
     if (fp) {
         fputs(json_str, fp);
         fclose(fp);
@@ -188,8 +193,9 @@ void load_sample_data(
     int32_t *motor_stop_seconds,
     int32_t *motor_cw_seconds,
     int32_t *motor_ccw_seconds
-) {
-    FILE *fp = fopen("/home/cat/test_1/data.json", "r");
+) 
+{
+    FILE *fp = fopen("/home/cat/eez_rk3566/data.json", "r");
     if (!fp) {
         perror("无法打开文件");
         return;
@@ -250,8 +256,9 @@ void load_sample_data(
     cJSON_Delete(root);
 }
 
-void save_communicate_data(const char *address, const char *gateway, const char *dns) {
-    const char *filepath = "/home/cat/test_1/data.json";
+void save_communicate_data(const char *address, const char *gateway, const char *dns) 
+{
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
     cJSON *root = NULL;
 
@@ -299,8 +306,9 @@ void save_communicate_data(const char *address, const char *gateway, const char 
     cJSON_Delete(root);
 }
 
-void load_communicate_data(char *address, char *gateway, char *dns, size_t max_len) {
-    const char *filepath = "/home/cat/test_1/data.json";
+void load_communicate_data(char *address, char *gateway, char *dns, size_t max_len) 
+{
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
     if (!fp) {
         perror("无法打开文件");
@@ -358,9 +366,9 @@ void load_communicate_data(char *address, char *gateway, char *dns, size_t max_l
     cJSON_Delete(root);
 }
 
-
-void save_test_data(int32_t rotational_speed) {
-    const char *filepath = "/home/cat/test_1/data.json";
+void save_test_data(int32_t rotational_speed) 
+{
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
     cJSON *root = NULL;
 
@@ -413,10 +421,11 @@ void save_test_data(int32_t rotational_speed) {
     cJSON_Delete(root);
 }
 
-void load_test_data(int32_t *rotational_speed) {
+void load_test_data(int32_t *rotational_speed) 
+{
     if (!rotational_speed) return;  // 防止空指针
 
-    const char *filepath = "/home/cat/test_1/data.json";
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
     if (!fp) {
         perror("无法打开文件");
@@ -457,6 +466,139 @@ void load_test_data(int32_t *rotational_speed) {
         *rotational_speed = (int32_t)(speed_item->valuedouble);
     } else {
         fprintf(stderr, "rotational_speed 字段不存在或不是数字\n");
+    }
+
+    cJSON_Delete(root);
+}
+
+void save_logs_to_json()
+{
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
+    FILE *fp = fopen(filepath, "r");
+    cJSON *root = NULL;
+
+    printf("[保存] 尝试打开 JSON 文件：%s\n", filepath);
+
+    if (fp) {
+        fseek(fp, 0, SEEK_END);
+        long length = ftell(fp);
+        rewind(fp);
+
+        char *data = (char *)malloc(length + 1);
+        if (data) {
+            fread(data, 1, length, fp);
+            data[length] = '\0';
+            root = cJSON_Parse(data);
+            free(data);
+            printf("[保存] 读取文件成功，大小：%ld 字节\n", length);
+        } else {
+            printf("[保存] 内存分配失败\n");
+        }
+        fclose(fp);
+    }
+
+    if (!root) {
+        printf("[保存] 文件为空或解析失败，创建新 JSON 对象\n");
+        root = cJSON_CreateObject();
+    }
+
+    // 创建新的 logs 数组
+    cJSON *logs = cJSON_CreateArray();
+
+    uint32_t count = lv_obj_get_child_cnt(objects.sampling_frequency_container);
+    int logs_added = 0;
+    for (uint32_t i = 0; i < count; ++i) {
+        lv_obj_t *child = lv_obj_get_child(objects.sampling_frequency_container, i);
+        if (lv_obj_check_type(child, &lv_label_class)) {
+            const char *text = lv_label_get_text(child);
+            if (text && strlen(text) > 0) {
+                cJSON_AddItemToArray(logs, cJSON_CreateString(text));
+                logs_added++;
+            }
+        }
+    }
+    printf("[保存] 从容器中采集到日志项数量：%d\n", logs_added);
+
+    // 替换 root 中的 logs 数组（如果不存在也会新增）
+    cJSON_ReplaceItemInObject(root, "logs", logs);
+
+    // 格式化输出（带缩进换行）
+    char *json_str = cJSON_PrintBuffered(root, 8192, 1);
+
+    if (!json_str) {
+        printf("[保存] cJSON_PrintBuffered 失败\n");
+        cJSON_Delete(root);
+        return;
+    }
+
+    // 写回文件（覆盖）
+    fp = fopen(filepath, "w");
+    if (fp) {
+        fputs(json_str, fp);
+        fflush(fp);
+        int fd = fileno(fp);
+        fsync(fd);
+        fclose(fp);
+        printf("[保存] 写入 JSON 文件成功，路径：%s\n", filepath);
+    } else {
+        perror("[保存] 打开文件写入失败");
+    }
+
+    free(json_str);
+    cJSON_Delete(root);
+}
+
+void load_logs_from_json()
+{
+    const char *filepath = "/home/cat/eez_rk3566/data.json";
+    FILE *fp = fopen(filepath, "r");
+    if (!fp) {
+        perror("[读取] 打开日志文件失败");
+        return;
+    }
+
+    fseek(fp, 0, SEEK_END);
+    long length = ftell(fp);
+    rewind(fp);
+
+    char *data = (char *)malloc(length + 1);
+    if (!data) {
+        perror("[读取] 内存分配失败");
+        fclose(fp);
+        return;
+    }
+
+    fread(data, 1, length, fp);
+    data[length] = '\0';
+    fclose(fp);
+
+    printf("[读取] JSON 文件读取成功，大小：%ld 字节\n", length);
+
+    cJSON *root = cJSON_Parse(data);
+    free(data);
+
+    if (!root) {
+        fprintf(stderr, "[读取] JSON 解析失败\n");
+        return;
+    }
+
+    cJSON *logs = cJSON_GetObjectItem(root, "logs");
+    if (logs && cJSON_IsArray(logs)) {
+        int size = cJSON_GetArraySize(logs);
+        printf("[读取] 读取到日志数组，数量：%d\n", size);
+
+        // 先清空 UI 容器旧内容
+        lv_obj_clean(objects.sampling_frequency_container);
+
+        for (int i = 0; i < size; ++i) {
+            cJSON *log_item = cJSON_GetArrayItem(logs, i);
+            if (cJSON_IsString(log_item)) {
+                printf("[读取] 添加日志项：%s\n", log_item->valuestring);
+                add_log_to_container(log_item->valuestring);
+            }
+        }
+    } else {
+        fprintf(stderr, "[读取] logs 字段为空或格式不正确\n");
     }
 
     cJSON_Delete(root);

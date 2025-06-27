@@ -7,11 +7,11 @@ ASM_FLAGS = -g
 
 ASM_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
-ASM_INCLUDES = -isystem /home/cat/test_1/lvgl -isystem /home/cat/test_1/build/lvgl 
+ASM_INCLUDES = -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 
 C_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu11
 
 C_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
-C_INCLUDES = -isystem /home/cat/test_1/lvgl -isystem /home/cat/test_1/build/lvgl 
+C_INCLUDES = -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 

@@ -159,6 +159,7 @@ typedef struct _objects_t {
     lv_obj_t *failure_number_container;
     lv_obj_t *obj53;
     lv_obj_t *obj54;
+    lv_obj_t *tem_chart;
     lv_obj_t *title_5;
     lv_obj_t *warning_l;
 } objects_t;

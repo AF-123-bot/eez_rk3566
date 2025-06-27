@@ -6,7 +6,7 @@ CXX_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu++17
 
 CXX_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
-CXX_INCLUDES = -isystem /home/cat/test_1/lvgl/src/libs/thorvg -isystem /home/cat/test_1/lvgl -isystem /home/cat/test_1/build/lvgl 
+CXX_INCLUDES = -isystem /home/cat/eez_rk3566/lvgl/src/libs/thorvg -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 
 # Custom flags: lvgl/CMakeFiles/lvgl_thorvg.dir/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o_FLAGS = -Wunused-parameter
 

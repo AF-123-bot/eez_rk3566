@@ -5,6 +5,8 @@
 #include "screens.h"
 #include "vars.h"
 #include "data_save_load.h"
+#include <lvgl.h>
+
 
 static lv_display_t * hal_init(int32_t w, int32_t h);
 void update_time_cb(lv_timer_t *timer);
@@ -152,8 +154,34 @@ void lvgl_data_init(void)
     set_var_sample_motor_cw_seconds(sample_motor_cw_seconds);
     set_var_sample_motor_stop_seconds(sample_motor_stop_seconds);
     //读取communicate页面上一次保存的数据
-
+    load_communicate_data(&address,&gateway,&dns,100);
+    set_var_address(address);
+    set_var_dns(dns);
+    set_var_gateway(gateway);
     //读取motor_test页面上一次保存的数据
     load_test_data(&rotational_speed);
     set_var_rotational_speed(rotational_speed);
+    //读取历史记录数据
+    // load_logs_from_json();
+
+
+
+    // 设置图表类型：线形图
+    lv_chart_set_type(objects.tem_chart, LV_CHART_TYPE_LINE);
+    // 设置显示点数
+    lv_chart_set_point_count(objects.tem_chart, 10);
+    // 设置Y轴范围，比如0到100
+    lv_chart_set_range(objects.tem_chart, LV_CHART_AXIS_PRIMARY_Y, 0, 100);
+
+    // 添加一条数据序列，颜色红色
+    lv_chart_series_t * ser = lv_chart_add_series(objects.tem_chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y);
+
+    // 填充固定数据点
+    int data[10] = {10, 20, 30, 40, 30, 20, 10, 50, 80, 60};
+    for (int i = 0; i < 10; i++) {
+        lv_chart_set_next_value(objects.tem_chart, ser, data[i]);
+    }
+
+    // 刷新图表显示
+    lv_chart_refresh(objects.tem_chart);
 }

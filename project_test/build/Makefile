@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cat/test_1
+CMAKE_SOURCE_DIR = /home/cat/eez_rk3566
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cat/test_1/build
+CMAKE_BINARY_DIR = /home/cat/eez_rk3566/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,17 +79,6 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target install
 install: preinstall
@@ -124,11 +113,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles /home/cat/test_1/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles /home/cat/eez_rk3566/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/test_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/eez_rk3566/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,17 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named project_test
+# Target rules for targets named eez_rk3566
 
 # Build rule for target.
-project_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 project_test
-.PHONY : project_test
+eez_rk3566: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eez_rk3566
+.PHONY : eez_rk3566
 
 # fast build rule for target.
-project_test/fast:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/build
-.PHONY : project_test/fast
+eez_rk3566/fast:
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/build
+.PHONY : eez_rk3566/fast
 
 #=============================================================================
 # Target rules for targets named lvgl_demos
@@ -227,7 +227,7 @@ lib/actions.o: lib/actions.c.o
 
 # target to build an object file
 lib/actions.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/actions.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/actions.c.o
 .PHONY : lib/actions.c.o
 
 lib/actions.i: lib/actions.c.i
@@ -236,7 +236,7 @@ lib/actions.i: lib/actions.c.i
 
 # target to preprocess a source file
 lib/actions.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/actions.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/actions.c.i
 .PHONY : lib/actions.c.i
 
 lib/actions.s: lib/actions.c.s
@@ -245,7 +245,7 @@ lib/actions.s: lib/actions.c.s
 
 # target to generate assembly for a file
 lib/actions.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/actions.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/actions.c.s
 .PHONY : lib/actions.c.s
 
 lib/eez-flow.o: lib/eez-flow.cpp.o
@@ -254,7 +254,7 @@ lib/eez-flow.o: lib/eez-flow.cpp.o
 
 # target to build an object file
 lib/eez-flow.cpp.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/eez-flow.cpp.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/eez-flow.cpp.o
 .PHONY : lib/eez-flow.cpp.o
 
 lib/eez-flow.i: lib/eez-flow.cpp.i
@@ -263,7 +263,7 @@ lib/eez-flow.i: lib/eez-flow.cpp.i
 
 # target to preprocess a source file
 lib/eez-flow.cpp.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/eez-flow.cpp.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/eez-flow.cpp.i
 .PHONY : lib/eez-flow.cpp.i
 
 lib/eez-flow.s: lib/eez-flow.cpp.s
@@ -272,7 +272,7 @@ lib/eez-flow.s: lib/eez-flow.cpp.s
 
 # target to generate assembly for a file
 lib/eez-flow.cpp.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/eez-flow.cpp.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/eez-flow.cpp.s
 .PHONY : lib/eez-flow.cpp.s
 
 lib/images.o: lib/images.c.o
@@ -281,7 +281,7 @@ lib/images.o: lib/images.c.o
 
 # target to build an object file
 lib/images.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/images.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/images.c.o
 .PHONY : lib/images.c.o
 
 lib/images.i: lib/images.c.i
@@ -290,7 +290,7 @@ lib/images.i: lib/images.c.i
 
 # target to preprocess a source file
 lib/images.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/images.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/images.c.i
 .PHONY : lib/images.c.i
 
 lib/images.s: lib/images.c.s
@@ -299,7 +299,7 @@ lib/images.s: lib/images.c.s
 
 # target to generate assembly for a file
 lib/images.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/images.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/images.c.s
 .PHONY : lib/images.c.s
 
 lib/screens.o: lib/screens.c.o
@@ -308,7 +308,7 @@ lib/screens.o: lib/screens.c.o
 
 # target to build an object file
 lib/screens.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/screens.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/screens.c.o
 .PHONY : lib/screens.c.o
 
 lib/screens.i: lib/screens.c.i
@@ -317,7 +317,7 @@ lib/screens.i: lib/screens.c.i
 
 # target to preprocess a source file
 lib/screens.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/screens.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/screens.c.i
 .PHONY : lib/screens.c.i
 
 lib/screens.s: lib/screens.c.s
@@ -326,7 +326,7 @@ lib/screens.s: lib/screens.c.s
 
 # target to generate assembly for a file
 lib/screens.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/screens.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/screens.c.s
 .PHONY : lib/screens.c.s
 
 lib/styles.o: lib/styles.c.o
@@ -335,7 +335,7 @@ lib/styles.o: lib/styles.c.o
 
 # target to build an object file
 lib/styles.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/styles.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/styles.c.o
 .PHONY : lib/styles.c.o
 
 lib/styles.i: lib/styles.c.i
@@ -344,7 +344,7 @@ lib/styles.i: lib/styles.c.i
 
 # target to preprocess a source file
 lib/styles.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/styles.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/styles.c.i
 .PHONY : lib/styles.c.i
 
 lib/styles.s: lib/styles.c.s
@@ -353,7 +353,7 @@ lib/styles.s: lib/styles.c.s
 
 # target to generate assembly for a file
 lib/styles.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/styles.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/styles.c.s
 .PHONY : lib/styles.c.s
 
 lib/ui.o: lib/ui.c.o
@@ -362,7 +362,7 @@ lib/ui.o: lib/ui.c.o
 
 # target to build an object file
 lib/ui.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui.c.o
 .PHONY : lib/ui.c.o
 
 lib/ui.i: lib/ui.c.i
@@ -371,7 +371,7 @@ lib/ui.i: lib/ui.c.i
 
 # target to preprocess a source file
 lib/ui.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui.c.i
 .PHONY : lib/ui.c.i
 
 lib/ui.s: lib/ui.c.s
@@ -380,7 +380,7 @@ lib/ui.s: lib/ui.c.s
 
 # target to generate assembly for a file
 lib/ui.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui.c.s
 .PHONY : lib/ui.c.s
 
 lib/ui_font_14.o: lib/ui_font_14.c.o
@@ -389,7 +389,7 @@ lib/ui_font_14.o: lib/ui_font_14.c.o
 
 # target to build an object file
 lib/ui_font_14.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_14.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_14.c.o
 .PHONY : lib/ui_font_14.c.o
 
 lib/ui_font_14.i: lib/ui_font_14.c.i
@@ -398,7 +398,7 @@ lib/ui_font_14.i: lib/ui_font_14.c.i
 
 # target to preprocess a source file
 lib/ui_font_14.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_14.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_14.c.i
 .PHONY : lib/ui_font_14.c.i
 
 lib/ui_font_14.s: lib/ui_font_14.c.s
@@ -407,7 +407,7 @@ lib/ui_font_14.s: lib/ui_font_14.c.s
 
 # target to generate assembly for a file
 lib/ui_font_14.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_14.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_14.c.s
 .PHONY : lib/ui_font_14.c.s
 
 lib/ui_font_16.o: lib/ui_font_16.c.o
@@ -416,7 +416,7 @@ lib/ui_font_16.o: lib/ui_font_16.c.o
 
 # target to build an object file
 lib/ui_font_16.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_16.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_16.c.o
 .PHONY : lib/ui_font_16.c.o
 
 lib/ui_font_16.i: lib/ui_font_16.c.i
@@ -425,7 +425,7 @@ lib/ui_font_16.i: lib/ui_font_16.c.i
 
 # target to preprocess a source file
 lib/ui_font_16.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_16.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_16.c.i
 .PHONY : lib/ui_font_16.c.i
 
 lib/ui_font_16.s: lib/ui_font_16.c.s
@@ -434,7 +434,7 @@ lib/ui_font_16.s: lib/ui_font_16.c.s
 
 # target to generate assembly for a file
 lib/ui_font_16.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_16.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_16.c.s
 .PHONY : lib/ui_font_16.c.s
 
 lib/ui_font_18.o: lib/ui_font_18.c.o
@@ -443,7 +443,7 @@ lib/ui_font_18.o: lib/ui_font_18.c.o
 
 # target to build an object file
 lib/ui_font_18.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_18.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_18.c.o
 .PHONY : lib/ui_font_18.c.o
 
 lib/ui_font_18.i: lib/ui_font_18.c.i
@@ -452,7 +452,7 @@ lib/ui_font_18.i: lib/ui_font_18.c.i
 
 # target to preprocess a source file
 lib/ui_font_18.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_18.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_18.c.i
 .PHONY : lib/ui_font_18.c.i
 
 lib/ui_font_18.s: lib/ui_font_18.c.s
@@ -461,7 +461,7 @@ lib/ui_font_18.s: lib/ui_font_18.c.s
 
 # target to generate assembly for a file
 lib/ui_font_18.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_18.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_18.c.s
 .PHONY : lib/ui_font_18.c.s
 
 lib/ui_font_20.o: lib/ui_font_20.c.o
@@ -470,7 +470,7 @@ lib/ui_font_20.o: lib/ui_font_20.c.o
 
 # target to build an object file
 lib/ui_font_20.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_20.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_20.c.o
 .PHONY : lib/ui_font_20.c.o
 
 lib/ui_font_20.i: lib/ui_font_20.c.i
@@ -479,7 +479,7 @@ lib/ui_font_20.i: lib/ui_font_20.c.i
 
 # target to preprocess a source file
 lib/ui_font_20.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_20.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_20.c.i
 .PHONY : lib/ui_font_20.c.i
 
 lib/ui_font_20.s: lib/ui_font_20.c.s
@@ -488,7 +488,7 @@ lib/ui_font_20.s: lib/ui_font_20.c.s
 
 # target to generate assembly for a file
 lib/ui_font_20.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_20.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_20.c.s
 .PHONY : lib/ui_font_20.c.s
 
 lib/ui_font_22.o: lib/ui_font_22.c.o
@@ -497,7 +497,7 @@ lib/ui_font_22.o: lib/ui_font_22.c.o
 
 # target to build an object file
 lib/ui_font_22.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_22.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_22.c.o
 .PHONY : lib/ui_font_22.c.o
 
 lib/ui_font_22.i: lib/ui_font_22.c.i
@@ -506,7 +506,7 @@ lib/ui_font_22.i: lib/ui_font_22.c.i
 
 # target to preprocess a source file
 lib/ui_font_22.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_22.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_22.c.i
 .PHONY : lib/ui_font_22.c.i
 
 lib/ui_font_22.s: lib/ui_font_22.c.s
@@ -515,7 +515,7 @@ lib/ui_font_22.s: lib/ui_font_22.c.s
 
 # target to generate assembly for a file
 lib/ui_font_22.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_22.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_22.c.s
 .PHONY : lib/ui_font_22.c.s
 
 lib/ui_font_24.o: lib/ui_font_24.c.o
@@ -524,7 +524,7 @@ lib/ui_font_24.o: lib/ui_font_24.c.o
 
 # target to build an object file
 lib/ui_font_24.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_24.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_24.c.o
 .PHONY : lib/ui_font_24.c.o
 
 lib/ui_font_24.i: lib/ui_font_24.c.i
@@ -533,7 +533,7 @@ lib/ui_font_24.i: lib/ui_font_24.c.i
 
 # target to preprocess a source file
 lib/ui_font_24.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_24.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_24.c.i
 .PHONY : lib/ui_font_24.c.i
 
 lib/ui_font_24.s: lib/ui_font_24.c.s
@@ -542,7 +542,7 @@ lib/ui_font_24.s: lib/ui_font_24.c.s
 
 # target to generate assembly for a file
 lib/ui_font_24.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_24.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_24.c.s
 .PHONY : lib/ui_font_24.c.s
 
 lib/ui_font_26.o: lib/ui_font_26.c.o
@@ -551,7 +551,7 @@ lib/ui_font_26.o: lib/ui_font_26.c.o
 
 # target to build an object file
 lib/ui_font_26.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_26.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_26.c.o
 .PHONY : lib/ui_font_26.c.o
 
 lib/ui_font_26.i: lib/ui_font_26.c.i
@@ -560,7 +560,7 @@ lib/ui_font_26.i: lib/ui_font_26.c.i
 
 # target to preprocess a source file
 lib/ui_font_26.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_26.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_26.c.i
 .PHONY : lib/ui_font_26.c.i
 
 lib/ui_font_26.s: lib/ui_font_26.c.s
@@ -569,7 +569,7 @@ lib/ui_font_26.s: lib/ui_font_26.c.s
 
 # target to generate assembly for a file
 lib/ui_font_26.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_26.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_26.c.s
 .PHONY : lib/ui_font_26.c.s
 
 lib/ui_font_28.o: lib/ui_font_28.c.o
@@ -578,7 +578,7 @@ lib/ui_font_28.o: lib/ui_font_28.c.o
 
 # target to build an object file
 lib/ui_font_28.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_28.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_28.c.o
 .PHONY : lib/ui_font_28.c.o
 
 lib/ui_font_28.i: lib/ui_font_28.c.i
@@ -587,7 +587,7 @@ lib/ui_font_28.i: lib/ui_font_28.c.i
 
 # target to preprocess a source file
 lib/ui_font_28.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_28.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_28.c.i
 .PHONY : lib/ui_font_28.c.i
 
 lib/ui_font_28.s: lib/ui_font_28.c.s
@@ -596,7 +596,7 @@ lib/ui_font_28.s: lib/ui_font_28.c.s
 
 # target to generate assembly for a file
 lib/ui_font_28.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_28.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_28.c.s
 .PHONY : lib/ui_font_28.c.s
 
 lib/ui_font_30.o: lib/ui_font_30.c.o
@@ -605,7 +605,7 @@ lib/ui_font_30.o: lib/ui_font_30.c.o
 
 # target to build an object file
 lib/ui_font_30.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_30.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_30.c.o
 .PHONY : lib/ui_font_30.c.o
 
 lib/ui_font_30.i: lib/ui_font_30.c.i
@@ -614,7 +614,7 @@ lib/ui_font_30.i: lib/ui_font_30.c.i
 
 # target to preprocess a source file
 lib/ui_font_30.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_30.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_30.c.i
 .PHONY : lib/ui_font_30.c.i
 
 lib/ui_font_30.s: lib/ui_font_30.c.s
@@ -623,7 +623,7 @@ lib/ui_font_30.s: lib/ui_font_30.c.s
 
 # target to generate assembly for a file
 lib/ui_font_30.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_30.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_30.c.s
 .PHONY : lib/ui_font_30.c.s
 
 lib/ui_font_32.o: lib/ui_font_32.c.o
@@ -632,7 +632,7 @@ lib/ui_font_32.o: lib/ui_font_32.c.o
 
 # target to build an object file
 lib/ui_font_32.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_32.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_32.c.o
 .PHONY : lib/ui_font_32.c.o
 
 lib/ui_font_32.i: lib/ui_font_32.c.i
@@ -641,7 +641,7 @@ lib/ui_font_32.i: lib/ui_font_32.c.i
 
 # target to preprocess a source file
 lib/ui_font_32.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_32.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_32.c.i
 .PHONY : lib/ui_font_32.c.i
 
 lib/ui_font_32.s: lib/ui_font_32.c.s
@@ -650,7 +650,7 @@ lib/ui_font_32.s: lib/ui_font_32.c.s
 
 # target to generate assembly for a file
 lib/ui_font_32.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_32.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_32.c.s
 .PHONY : lib/ui_font_32.c.s
 
 lib/ui_font_34.o: lib/ui_font_34.c.o
@@ -659,7 +659,7 @@ lib/ui_font_34.o: lib/ui_font_34.c.o
 
 # target to build an object file
 lib/ui_font_34.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_34.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_34.c.o
 .PHONY : lib/ui_font_34.c.o
 
 lib/ui_font_34.i: lib/ui_font_34.c.i
@@ -668,7 +668,7 @@ lib/ui_font_34.i: lib/ui_font_34.c.i
 
 # target to preprocess a source file
 lib/ui_font_34.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_34.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_34.c.i
 .PHONY : lib/ui_font_34.c.i
 
 lib/ui_font_34.s: lib/ui_font_34.c.s
@@ -677,7 +677,7 @@ lib/ui_font_34.s: lib/ui_font_34.c.s
 
 # target to generate assembly for a file
 lib/ui_font_34.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_34.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_34.c.s
 .PHONY : lib/ui_font_34.c.s
 
 lib/ui_font_36.o: lib/ui_font_36.c.o
@@ -686,7 +686,7 @@ lib/ui_font_36.o: lib/ui_font_36.c.o
 
 # target to build an object file
 lib/ui_font_36.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_36.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_36.c.o
 .PHONY : lib/ui_font_36.c.o
 
 lib/ui_font_36.i: lib/ui_font_36.c.i
@@ -695,7 +695,7 @@ lib/ui_font_36.i: lib/ui_font_36.c.i
 
 # target to preprocess a source file
 lib/ui_font_36.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_36.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_36.c.i
 .PHONY : lib/ui_font_36.c.i
 
 lib/ui_font_36.s: lib/ui_font_36.c.s
@@ -704,7 +704,7 @@ lib/ui_font_36.s: lib/ui_font_36.c.s
 
 # target to generate assembly for a file
 lib/ui_font_36.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_font_36.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_font_36.c.s
 .PHONY : lib/ui_font_36.c.s
 
 lib/ui_image_b5.o: lib/ui_image_b5.c.o
@@ -713,7 +713,7 @@ lib/ui_image_b5.o: lib/ui_image_b5.c.o
 
 # target to build an object file
 lib/ui_image_b5.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_b5.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_b5.c.o
 .PHONY : lib/ui_image_b5.c.o
 
 lib/ui_image_b5.i: lib/ui_image_b5.c.i
@@ -722,7 +722,7 @@ lib/ui_image_b5.i: lib/ui_image_b5.c.i
 
 # target to preprocess a source file
 lib/ui_image_b5.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_b5.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_b5.c.i
 .PHONY : lib/ui_image_b5.c.i
 
 lib/ui_image_b5.s: lib/ui_image_b5.c.s
@@ -731,7 +731,7 @@ lib/ui_image_b5.s: lib/ui_image_b5.c.s
 
 # target to generate assembly for a file
 lib/ui_image_b5.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_b5.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_b5.c.s
 .PHONY : lib/ui_image_b5.c.s
 
 lib/ui_image_background.o: lib/ui_image_background.c.o
@@ -740,7 +740,7 @@ lib/ui_image_background.o: lib/ui_image_background.c.o
 
 # target to build an object file
 lib/ui_image_background.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background.c.o
 .PHONY : lib/ui_image_background.c.o
 
 lib/ui_image_background.i: lib/ui_image_background.c.i
@@ -749,7 +749,7 @@ lib/ui_image_background.i: lib/ui_image_background.c.i
 
 # target to preprocess a source file
 lib/ui_image_background.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background.c.i
 .PHONY : lib/ui_image_background.c.i
 
 lib/ui_image_background.s: lib/ui_image_background.c.s
@@ -758,7 +758,7 @@ lib/ui_image_background.s: lib/ui_image_background.c.s
 
 # target to generate assembly for a file
 lib/ui_image_background.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background.c.s
 .PHONY : lib/ui_image_background.c.s
 
 lib/ui_image_background1.o: lib/ui_image_background1.c.o
@@ -767,7 +767,7 @@ lib/ui_image_background1.o: lib/ui_image_background1.c.o
 
 # target to build an object file
 lib/ui_image_background1.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background1.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background1.c.o
 .PHONY : lib/ui_image_background1.c.o
 
 lib/ui_image_background1.i: lib/ui_image_background1.c.i
@@ -776,7 +776,7 @@ lib/ui_image_background1.i: lib/ui_image_background1.c.i
 
 # target to preprocess a source file
 lib/ui_image_background1.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background1.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background1.c.i
 .PHONY : lib/ui_image_background1.c.i
 
 lib/ui_image_background1.s: lib/ui_image_background1.c.s
@@ -785,7 +785,7 @@ lib/ui_image_background1.s: lib/ui_image_background1.c.s
 
 # target to generate assembly for a file
 lib/ui_image_background1.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background1.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background1.c.s
 .PHONY : lib/ui_image_background1.c.s
 
 lib/ui_image_background2.o: lib/ui_image_background2.c.o
@@ -794,7 +794,7 @@ lib/ui_image_background2.o: lib/ui_image_background2.c.o
 
 # target to build an object file
 lib/ui_image_background2.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background2.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background2.c.o
 .PHONY : lib/ui_image_background2.c.o
 
 lib/ui_image_background2.i: lib/ui_image_background2.c.i
@@ -803,7 +803,7 @@ lib/ui_image_background2.i: lib/ui_image_background2.c.i
 
 # target to preprocess a source file
 lib/ui_image_background2.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background2.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background2.c.i
 .PHONY : lib/ui_image_background2.c.i
 
 lib/ui_image_background2.s: lib/ui_image_background2.c.s
@@ -812,7 +812,7 @@ lib/ui_image_background2.s: lib/ui_image_background2.c.s
 
 # target to generate assembly for a file
 lib/ui_image_background2.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_background2.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_background2.c.s
 .PHONY : lib/ui_image_background2.c.s
 
 lib/ui_image_bar.o: lib/ui_image_bar.c.o
@@ -821,7 +821,7 @@ lib/ui_image_bar.o: lib/ui_image_bar.c.o
 
 # target to build an object file
 lib/ui_image_bar.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_bar.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_bar.c.o
 .PHONY : lib/ui_image_bar.c.o
 
 lib/ui_image_bar.i: lib/ui_image_bar.c.i
@@ -830,7 +830,7 @@ lib/ui_image_bar.i: lib/ui_image_bar.c.i
 
 # target to preprocess a source file
 lib/ui_image_bar.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_bar.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_bar.c.i
 .PHONY : lib/ui_image_bar.c.i
 
 lib/ui_image_bar.s: lib/ui_image_bar.c.s
@@ -839,7 +839,7 @@ lib/ui_image_bar.s: lib/ui_image_bar.c.s
 
 # target to generate assembly for a file
 lib/ui_image_bar.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_bar.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_bar.c.s
 .PHONY : lib/ui_image_bar.c.s
 
 lib/ui_image_barrel_empty.o: lib/ui_image_barrel_empty.c.o
@@ -848,7 +848,7 @@ lib/ui_image_barrel_empty.o: lib/ui_image_barrel_empty.c.o
 
 # target to build an object file
 lib/ui_image_barrel_empty.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_empty.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_empty.c.o
 .PHONY : lib/ui_image_barrel_empty.c.o
 
 lib/ui_image_barrel_empty.i: lib/ui_image_barrel_empty.c.i
@@ -857,7 +857,7 @@ lib/ui_image_barrel_empty.i: lib/ui_image_barrel_empty.c.i
 
 # target to preprocess a source file
 lib/ui_image_barrel_empty.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_empty.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_empty.c.i
 .PHONY : lib/ui_image_barrel_empty.c.i
 
 lib/ui_image_barrel_empty.s: lib/ui_image_barrel_empty.c.s
@@ -866,7 +866,7 @@ lib/ui_image_barrel_empty.s: lib/ui_image_barrel_empty.c.s
 
 # target to generate assembly for a file
 lib/ui_image_barrel_empty.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_empty.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_empty.c.s
 .PHONY : lib/ui_image_barrel_empty.c.s
 
 lib/ui_image_barrel_full.o: lib/ui_image_barrel_full.c.o
@@ -875,7 +875,7 @@ lib/ui_image_barrel_full.o: lib/ui_image_barrel_full.c.o
 
 # target to build an object file
 lib/ui_image_barrel_full.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_full.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_full.c.o
 .PHONY : lib/ui_image_barrel_full.c.o
 
 lib/ui_image_barrel_full.i: lib/ui_image_barrel_full.c.i
@@ -884,7 +884,7 @@ lib/ui_image_barrel_full.i: lib/ui_image_barrel_full.c.i
 
 # target to preprocess a source file
 lib/ui_image_barrel_full.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_full.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_full.c.i
 .PHONY : lib/ui_image_barrel_full.c.i
 
 lib/ui_image_barrel_full.s: lib/ui_image_barrel_full.c.s
@@ -893,7 +893,7 @@ lib/ui_image_barrel_full.s: lib/ui_image_barrel_full.c.s
 
 # target to generate assembly for a file
 lib/ui_image_barrel_full.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_barrel_full.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_barrel_full.c.s
 .PHONY : lib/ui_image_barrel_full.c.s
 
 lib/ui_image_calendar_symbol.o: lib/ui_image_calendar_symbol.c.o
@@ -902,7 +902,7 @@ lib/ui_image_calendar_symbol.o: lib/ui_image_calendar_symbol.c.o
 
 # target to build an object file
 lib/ui_image_calendar_symbol.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_calendar_symbol.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_calendar_symbol.c.o
 .PHONY : lib/ui_image_calendar_symbol.c.o
 
 lib/ui_image_calendar_symbol.i: lib/ui_image_calendar_symbol.c.i
@@ -911,7 +911,7 @@ lib/ui_image_calendar_symbol.i: lib/ui_image_calendar_symbol.c.i
 
 # target to preprocess a source file
 lib/ui_image_calendar_symbol.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_calendar_symbol.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_calendar_symbol.c.i
 .PHONY : lib/ui_image_calendar_symbol.c.i
 
 lib/ui_image_calendar_symbol.s: lib/ui_image_calendar_symbol.c.s
@@ -920,7 +920,7 @@ lib/ui_image_calendar_symbol.s: lib/ui_image_calendar_symbol.c.s
 
 # target to generate assembly for a file
 lib/ui_image_calendar_symbol.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_calendar_symbol.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_calendar_symbol.c.s
 .PHONY : lib/ui_image_calendar_symbol.c.s
 
 lib/ui_image_home.o: lib/ui_image_home.c.o
@@ -929,7 +929,7 @@ lib/ui_image_home.o: lib/ui_image_home.c.o
 
 # target to build an object file
 lib/ui_image_home.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_home.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_home.c.o
 .PHONY : lib/ui_image_home.c.o
 
 lib/ui_image_home.i: lib/ui_image_home.c.i
@@ -938,7 +938,7 @@ lib/ui_image_home.i: lib/ui_image_home.c.i
 
 # target to preprocess a source file
 lib/ui_image_home.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_home.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_home.c.i
 .PHONY : lib/ui_image_home.c.i
 
 lib/ui_image_home.s: lib/ui_image_home.c.s
@@ -947,7 +947,7 @@ lib/ui_image_home.s: lib/ui_image_home.c.s
 
 # target to generate assembly for a file
 lib/ui_image_home.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_home.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_home.c.s
 .PHONY : lib/ui_image_home.c.s
 
 lib/ui_image_net.o: lib/ui_image_net.c.o
@@ -956,7 +956,7 @@ lib/ui_image_net.o: lib/ui_image_net.c.o
 
 # target to build an object file
 lib/ui_image_net.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_net.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_net.c.o
 .PHONY : lib/ui_image_net.c.o
 
 lib/ui_image_net.i: lib/ui_image_net.c.i
@@ -965,7 +965,7 @@ lib/ui_image_net.i: lib/ui_image_net.c.i
 
 # target to preprocess a source file
 lib/ui_image_net.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_net.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_net.c.i
 .PHONY : lib/ui_image_net.c.i
 
 lib/ui_image_net.s: lib/ui_image_net.c.s
@@ -974,7 +974,7 @@ lib/ui_image_net.s: lib/ui_image_net.c.s
 
 # target to generate assembly for a file
 lib/ui_image_net.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_net.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_net.c.s
 .PHONY : lib/ui_image_net.c.s
 
 lib/ui_image_power.o: lib/ui_image_power.c.o
@@ -983,7 +983,7 @@ lib/ui_image_power.o: lib/ui_image_power.c.o
 
 # target to build an object file
 lib/ui_image_power.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_power.c.o
 .PHONY : lib/ui_image_power.c.o
 
 lib/ui_image_power.i: lib/ui_image_power.c.i
@@ -992,7 +992,7 @@ lib/ui_image_power.i: lib/ui_image_power.c.i
 
 # target to preprocess a source file
 lib/ui_image_power.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_power.c.i
 .PHONY : lib/ui_image_power.c.i
 
 lib/ui_image_power.s: lib/ui_image_power.c.s
@@ -1001,7 +1001,7 @@ lib/ui_image_power.s: lib/ui_image_power.c.s
 
 # target to generate assembly for a file
 lib/ui_image_power.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_power.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_power.c.s
 .PHONY : lib/ui_image_power.c.s
 
 lib/ui_image_reboot.o: lib/ui_image_reboot.c.o
@@ -1010,7 +1010,7 @@ lib/ui_image_reboot.o: lib/ui_image_reboot.c.o
 
 # target to build an object file
 lib/ui_image_reboot.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_reboot.c.o
 .PHONY : lib/ui_image_reboot.c.o
 
 lib/ui_image_reboot.i: lib/ui_image_reboot.c.i
@@ -1019,7 +1019,7 @@ lib/ui_image_reboot.i: lib/ui_image_reboot.c.i
 
 # target to preprocess a source file
 lib/ui_image_reboot.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_reboot.c.i
 .PHONY : lib/ui_image_reboot.c.i
 
 lib/ui_image_reboot.s: lib/ui_image_reboot.c.s
@@ -1028,7 +1028,7 @@ lib/ui_image_reboot.s: lib/ui_image_reboot.c.s
 
 # target to generate assembly for a file
 lib/ui_image_reboot.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_reboot.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_reboot.c.s
 .PHONY : lib/ui_image_reboot.c.s
 
 lib/ui_image_setting1.o: lib/ui_image_setting1.c.o
@@ -1037,7 +1037,7 @@ lib/ui_image_setting1.o: lib/ui_image_setting1.c.o
 
 # target to build an object file
 lib/ui_image_setting1.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting1.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting1.c.o
 .PHONY : lib/ui_image_setting1.c.o
 
 lib/ui_image_setting1.i: lib/ui_image_setting1.c.i
@@ -1046,7 +1046,7 @@ lib/ui_image_setting1.i: lib/ui_image_setting1.c.i
 
 # target to preprocess a source file
 lib/ui_image_setting1.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting1.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting1.c.i
 .PHONY : lib/ui_image_setting1.c.i
 
 lib/ui_image_setting1.s: lib/ui_image_setting1.c.s
@@ -1055,7 +1055,7 @@ lib/ui_image_setting1.s: lib/ui_image_setting1.c.s
 
 # target to generate assembly for a file
 lib/ui_image_setting1.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting1.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting1.c.s
 .PHONY : lib/ui_image_setting1.c.s
 
 lib/ui_image_setting7.o: lib/ui_image_setting7.c.o
@@ -1064,7 +1064,7 @@ lib/ui_image_setting7.o: lib/ui_image_setting7.c.o
 
 # target to build an object file
 lib/ui_image_setting7.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting7.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting7.c.o
 .PHONY : lib/ui_image_setting7.c.o
 
 lib/ui_image_setting7.i: lib/ui_image_setting7.c.i
@@ -1073,7 +1073,7 @@ lib/ui_image_setting7.i: lib/ui_image_setting7.c.i
 
 # target to preprocess a source file
 lib/ui_image_setting7.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting7.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting7.c.i
 .PHONY : lib/ui_image_setting7.c.i
 
 lib/ui_image_setting7.s: lib/ui_image_setting7.c.s
@@ -1082,7 +1082,7 @@ lib/ui_image_setting7.s: lib/ui_image_setting7.c.s
 
 # target to generate assembly for a file
 lib/ui_image_setting7.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_setting7.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_setting7.c.s
 .PHONY : lib/ui_image_setting7.c.s
 
 lib/ui_image_shutdown.o: lib/ui_image_shutdown.c.o
@@ -1091,7 +1091,7 @@ lib/ui_image_shutdown.o: lib/ui_image_shutdown.c.o
 
 # target to build an object file
 lib/ui_image_shutdown.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_shutdown.c.o
 .PHONY : lib/ui_image_shutdown.c.o
 
 lib/ui_image_shutdown.i: lib/ui_image_shutdown.c.i
@@ -1100,7 +1100,7 @@ lib/ui_image_shutdown.i: lib/ui_image_shutdown.c.i
 
 # target to preprocess a source file
 lib/ui_image_shutdown.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_shutdown.c.i
 .PHONY : lib/ui_image_shutdown.c.i
 
 lib/ui_image_shutdown.s: lib/ui_image_shutdown.c.s
@@ -1109,7 +1109,7 @@ lib/ui_image_shutdown.s: lib/ui_image_shutdown.c.s
 
 # target to generate assembly for a file
 lib/ui_image_shutdown.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_shutdown.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_shutdown.c.s
 .PHONY : lib/ui_image_shutdown.c.s
 
 lib/ui_image_sr_back.o: lib/ui_image_sr_back.c.o
@@ -1118,7 +1118,7 @@ lib/ui_image_sr_back.o: lib/ui_image_sr_back.c.o
 
 # target to build an object file
 lib/ui_image_sr_back.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_sr_back.c.o
 .PHONY : lib/ui_image_sr_back.c.o
 
 lib/ui_image_sr_back.i: lib/ui_image_sr_back.c.i
@@ -1127,7 +1127,7 @@ lib/ui_image_sr_back.i: lib/ui_image_sr_back.c.i
 
 # target to preprocess a source file
 lib/ui_image_sr_back.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_sr_back.c.i
 .PHONY : lib/ui_image_sr_back.c.i
 
 lib/ui_image_sr_back.s: lib/ui_image_sr_back.c.s
@@ -1136,7 +1136,7 @@ lib/ui_image_sr_back.s: lib/ui_image_sr_back.c.s
 
 # target to generate assembly for a file
 lib/ui_image_sr_back.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_sr_back.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_sr_back.c.s
 .PHONY : lib/ui_image_sr_back.c.s
 
 lib/ui_image_warning_background.o: lib/ui_image_warning_background.c.o
@@ -1145,7 +1145,7 @@ lib/ui_image_warning_background.o: lib/ui_image_warning_background.c.o
 
 # target to build an object file
 lib/ui_image_warning_background.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_background.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_background.c.o
 .PHONY : lib/ui_image_warning_background.c.o
 
 lib/ui_image_warning_background.i: lib/ui_image_warning_background.c.i
@@ -1154,7 +1154,7 @@ lib/ui_image_warning_background.i: lib/ui_image_warning_background.c.i
 
 # target to preprocess a source file
 lib/ui_image_warning_background.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_background.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_background.c.i
 .PHONY : lib/ui_image_warning_background.c.i
 
 lib/ui_image_warning_background.s: lib/ui_image_warning_background.c.s
@@ -1163,7 +1163,7 @@ lib/ui_image_warning_background.s: lib/ui_image_warning_background.c.s
 
 # target to generate assembly for a file
 lib/ui_image_warning_background.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_background.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_background.c.s
 .PHONY : lib/ui_image_warning_background.c.s
 
 lib/ui_image_warning_icon.o: lib/ui_image_warning_icon.c.o
@@ -1172,7 +1172,7 @@ lib/ui_image_warning_icon.o: lib/ui_image_warning_icon.c.o
 
 # target to build an object file
 lib/ui_image_warning_icon.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_icon.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_icon.c.o
 .PHONY : lib/ui_image_warning_icon.c.o
 
 lib/ui_image_warning_icon.i: lib/ui_image_warning_icon.c.i
@@ -1181,7 +1181,7 @@ lib/ui_image_warning_icon.i: lib/ui_image_warning_icon.c.i
 
 # target to preprocess a source file
 lib/ui_image_warning_icon.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_icon.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_icon.c.i
 .PHONY : lib/ui_image_warning_icon.c.i
 
 lib/ui_image_warning_icon.s: lib/ui_image_warning_icon.c.s
@@ -1190,7 +1190,7 @@ lib/ui_image_warning_icon.s: lib/ui_image_warning_icon.c.s
 
 # target to generate assembly for a file
 lib/ui_image_warning_icon.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/ui_image_warning_icon.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/ui_image_warning_icon.c.s
 .PHONY : lib/ui_image_warning_icon.c.s
 
 lib/vars.o: lib/vars.c.o
@@ -1199,7 +1199,7 @@ lib/vars.o: lib/vars.c.o
 
 # target to build an object file
 lib/vars.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/vars.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/vars.c.o
 .PHONY : lib/vars.c.o
 
 lib/vars.i: lib/vars.c.i
@@ -1208,7 +1208,7 @@ lib/vars.i: lib/vars.c.i
 
 # target to preprocess a source file
 lib/vars.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/vars.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/vars.c.i
 .PHONY : lib/vars.c.i
 
 lib/vars.s: lib/vars.c.s
@@ -1217,7 +1217,7 @@ lib/vars.s: lib/vars.c.s
 
 # target to generate assembly for a file
 lib/vars.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/lib/vars.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/lib/vars.c.s
 .PHONY : lib/vars.c.s
 
 src/data_save_load.o: src/data_save_load.c.o
@@ -1226,7 +1226,7 @@ src/data_save_load.o: src/data_save_load.c.o
 
 # target to build an object file
 src/data_save_load.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/data_save_load.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o
 .PHONY : src/data_save_load.c.o
 
 src/data_save_load.i: src/data_save_load.c.i
@@ -1235,7 +1235,7 @@ src/data_save_load.i: src/data_save_load.c.i
 
 # target to preprocess a source file
 src/data_save_load.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/data_save_load.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/data_save_load.c.i
 .PHONY : src/data_save_load.c.i
 
 src/data_save_load.s: src/data_save_load.c.s
@@ -1244,7 +1244,7 @@ src/data_save_load.s: src/data_save_load.c.s
 
 # target to generate assembly for a file
 src/data_save_load.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/data_save_load.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/data_save_load.c.s
 .PHONY : src/data_save_load.c.s
 
 src/gpio.o: src/gpio.c.o
@@ -1253,7 +1253,7 @@ src/gpio.o: src/gpio.c.o
 
 # target to build an object file
 src/gpio.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/gpio.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/gpio.c.o
 .PHONY : src/gpio.c.o
 
 src/gpio.i: src/gpio.c.i
@@ -1262,7 +1262,7 @@ src/gpio.i: src/gpio.c.i
 
 # target to preprocess a source file
 src/gpio.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/gpio.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/gpio.c.i
 .PHONY : src/gpio.c.i
 
 src/gpio.s: src/gpio.c.s
@@ -1271,7 +1271,7 @@ src/gpio.s: src/gpio.c.s
 
 # target to generate assembly for a file
 src/gpio.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/gpio.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/gpio.c.s
 .PHONY : src/gpio.c.s
 
 src/main.o: src/main.c.o
@@ -1280,7 +1280,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -1289,7 +1289,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -1298,7 +1298,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/uart.o: src/uart.c.o
@@ -1307,7 +1307,7 @@ src/uart.o: src/uart.c.o
 
 # target to build an object file
 src/uart.c.o:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/uart.c.o
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/uart.c.o
 .PHONY : src/uart.c.o
 
 src/uart.i: src/uart.c.i
@@ -1316,7 +1316,7 @@ src/uart.i: src/uart.c.i
 
 # target to preprocess a source file
 src/uart.c.i:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/uart.c.i
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/uart.c.i
 .PHONY : src/uart.c.i
 
 src/uart.s: src/uart.c.s
@@ -1325,7 +1325,7 @@ src/uart.s: src/uart.c.s
 
 # target to generate assembly for a file
 src/uart.c.s:
-	$(MAKE) -f CMakeFiles/project_test.dir/build.make CMakeFiles/project_test.dir/src/uart.c.s
+	$(MAKE) -f CMakeFiles/eez_rk3566.dir/build.make CMakeFiles/eez_rk3566.dir/src/uart.c.s
 .PHONY : src/uart.c.s
 
 # Help Target
@@ -1336,11 +1336,11 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... project_test"
+	@echo "... edit_cache"
+	@echo "... eez_rk3566"
 	@echo "... lvgl_demos"
 	@echo "... lvgl_examples"
 	@echo "... lvgl_thorvg"

@@ -57,7 +57,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/project_test.dir/DependInfo.cmake"
+  "CMakeFiles/eez_rk3566.dir/DependInfo.cmake"
   "lvgl/CMakeFiles/lvgl_demos.dir/DependInfo.cmake"
   "lvgl/CMakeFiles/lvgl_examples.dir/DependInfo.cmake"
   "lvgl/CMakeFiles/lvgl_thorvg.dir/DependInfo.cmake"
