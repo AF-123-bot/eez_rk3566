@@ -4,96 +4,83 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
+#include <ctype.h>
+#include <errno.h>
 
-int uart_fd = -1;
-
-int open_serial(const char *device, int baudrate) {
-    int fd = open(device, O_RDWR | O_NOCTTY | O_NONBLOCK);
-    if (fd == -1) {
-        perror("串口打开失败");
+int open_serial(const char *device, int baudrate) 
+{
+    int fd = open(device, O_RDWR | O_NOCTTY);
+    if (fd < 0) {
+        perror("打开串口失败");
         return -1;
     }
-    if (set_serial_attr(fd, baudrate, 8, 'N', 1, 10) < 0) {
-        close(fd);
-        return -1;
-    }
-    uart_fd = fd; // 赋值给全局变量
-    return fd;
-}
 
-int set_serial_attr(int fd, int baudrate, int databits, char parity, int stopbits, int timeout_sec) {
     struct termios tty;
     memset(&tty, 0, sizeof tty);
 
     if (tcgetattr(fd, &tty) != 0) {
-        perror("tcgetattr failed");
+        perror("tcgetattr失败");
+        close(fd);
         return -1;
     }
 
     // 设置波特率
     speed_t speed;
     switch (baudrate) {
+        case 9600: speed = B9600; break;
+        case 19200: speed = B19200; break;
+        case 38400: speed = B38400; break;
+        case 57600: speed = B57600; break;
         case 115200: speed = B115200; break;
-        case 9600:   speed = B9600; break;
-        default:     speed = B115200; break;
+        default:
+            fprintf(stderr, "不支持的波特率，默认9600\n");
+            speed = B9600;
     }
     cfsetospeed(&tty, speed);
     cfsetispeed(&tty, speed);
 
-    // 设置数据位
+    // 8N1设置
     tty.c_cflag &= ~CSIZE;
-    if (databits == 7) tty.c_cflag |= CS7;
-    else tty.c_cflag |= CS8;
+    tty.c_cflag |= CS8;     // 8位数据
+    tty.c_cflag &= ~PARENB; // 无奇偶校验
+    tty.c_cflag &= ~CSTOPB; // 1位停止位
 
-    // 设置奇偶校验
-    if (parity == 'N') {
-        tty.c_cflag &= ~PARENB;
-    } else if (parity == 'E') {
-        tty.c_cflag |= PARENB;
-        tty.c_cflag &= ~PARODD;
-    } else if (parity == 'O') {
-        tty.c_cflag |= PARENB;
-        tty.c_cflag |= PARODD;
-    }
+    tty.c_cflag |= (CLOCAL | CREAD);  // 启动接收器，忽略调制解调器状态线
+    tty.c_cflag &= ~CRTSCTS;           // 关闭硬件流控
 
-    // 设置停止位
-    if (stopbits == 2) tty.c_cflag |= CSTOPB;
-    else tty.c_cflag &= ~CSTOPB;
-
-    tty.c_cflag |= (CLOCAL | CREAD); // 启动接收器
-
+    // 设置为原始模式（无特殊处理）
+    tty.c_lflag = 0;
     tty.c_iflag = 0;
     tty.c_oflag = 0;
-    tty.c_lflag = 0; // 原始模式
 
-    // 超时设置
-    tty.c_cc[VTIME] = timeout_sec * 10; // 单位 0.1s
+    // 设置读超时
     tty.c_cc[VMIN] = 0;
+    tty.c_cc[VTIME] = 10; // 1秒超时
 
     tcflush(fd, TCIOFLUSH);
 
     if (tcsetattr(fd, TCSANOW, &tty) != 0) {
-        perror("tcsetattr failed");
+        perror("tcsetattr失败");
+        close(fd);
         return -1;
     }
 
-    return 0;
+    return fd;
 }
 
-int motor_forward(int fd, int speed) {
+int motor_forward(int fd, int speed) 
+{
     /* 检查速度范围是否合法 */
-    if (speed < 400 || speed > 40000) {
-        fprintf(stderr, "Error: Speed %d out of range (400-40000)\n", speed);
-        return -1;
-    }
+    if (speed < 0 || speed > 40000) return -1;
 
     /* 构造正向控制指令数据包
-     * 固定格式: 55 AA 06 09 [速度低字节] [速度高字节] 00 00 00 C3
+     * 固定格式: 55 aa 06 09 [速度低字节] [速度高字节] 00 00 00 C3
      */
     unsigned char packet[10] = {
-        0x55, 0xAA, 0x06, 0x09,          // 固定包头和指令
-        (unsigned char)(speed & 0xFF),     // 速度低字节
-        (unsigned char)((speed >> 8) & 0xFF), // 速度高字节
+        0x55, 0xaa, 0x06, 0x09,          // 固定包头和指令
+        (unsigned char)(speed & 0xFF), // 速度低字节
+        (unsigned char)((speed >> 8) & 0xFF),     // 速度高字节
         0x00, 0x00, 0x00,                 // 保留位
         0xC3                              // 固定结束符(非校验和)
     };
@@ -104,24 +91,23 @@ int motor_forward(int fd, int speed) {
         perror("发送转盘正转指令失败");
         return -1;
     }
+    tcdrain(fd);
 
     return 0;
 }
 
-int motor_reverse(int fd, int speed) {
+int motor_reverse(int fd, int speed) 
+{
     /* 检查速度范围是否合法 */
-    if (speed < 400 || speed > 40000) {
-        fprintf(stderr, "Error: Speed %d out of range (400-40000)\n", speed);
-        return -1;
-    }
+    if (speed < 0 || speed > 40000) return -1;
 
     /* 构造反向控制指令数据包
      * 固定格式: 55 AA 06 0A [速度低字节] [速度高字节] 00 00 00 C3
      */
     unsigned char packet[10] = {
         0x55, 0xAA, 0x06, 0x0A,          // 固定包头和指令
-        (unsigned char)(speed & 0xFF),    // 速度低字节
-        (unsigned char)((speed >> 8) & 0xFF), // 速度高字节
+        (unsigned char)(speed & 0xFF), // 速度低字节
+        (unsigned char)((speed >> 8) & 0xFF),    // 速度高字节
         0x00, 0x00, 0x00,                // 保留位
         0xC3                             // 固定结束符(非校验和)
     };
@@ -136,14 +122,44 @@ int motor_reverse(int fd, int speed) {
     return 0;
 }
 
-int motor_move_absolute(int fd, int speed, int32_t steps) {
-    if (speed < 400 || speed > 40000) {
-        fprintf(stderr, "Error: Speed %d out of range (400-40000)\n", speed);
-        return -1;
-    }
+// 电机绝对运动
+// steps 等于运动到的绝对位置，一圈为180000 ， 则1/3为60000。2/3为120000
+int motor_move_absolute(int fd, int speed, int32_t radius) 
+{
+    if (speed < 0 || speed > 40000) return -1;
+    int32_t steps = radius * 1000;
 
     unsigned char packet[10] = {
         0x55, 0xAA, 0x07,                 // 固定包头和指令
+        (unsigned char)(speed & 0xFF),    // 速度低字节
+        (unsigned char)((speed >> 8) & 0xFF), // 速度高字节
+        (unsigned char)(steps & 0xFF),            // 步数低字节
+        (unsigned char)((steps >> 8) & 0xFF),
+        (unsigned char)((steps >> 16) & 0xFF),
+        (unsigned char)((steps >> 24) & 0xFF),
+        0xC3                             // 固定结束符(非校验和)
+    };
+
+
+    int n = write(fd, packet, sizeof(packet));
+    if (n != sizeof(packet)) {
+        perror("发送电机绝对运动指令失败");
+        return -1;
+    }
+
+    return 0;
+}
+
+// 电机增量运动
+// steps 等于增加的运动距离，一圈为180000 ， 则增加1/3为60000。增加2/3为120000
+int motor_move_incremental(int fd, int speed, int32_t radius) 
+{
+    if (speed < 0 || speed > 40000) return -1;
+
+    int32_t steps = radius * 1000;
+
+    unsigned char packet[10] = {
+        0x55, 0xAA, 0x08,                 // 固定包头和指令
         (unsigned char)(speed & 0xFF),    // 速度低字节
         (unsigned char)((speed >> 8) & 0xFF), // 速度高字节
         (unsigned char)(steps & 0xFF),            // 步数低字节
@@ -168,7 +184,8 @@ int motor_move_absolute(int fd, int speed, int32_t steps) {
  * @param fd 串口文件描述符
  * @return 发送成功返回 0，失败返回 -1
  */
-int motor_pause(int fd) {
+int motor_pause(int fd) 
+{
     unsigned char packet[10] = {
         0x55, 0xAA, 0x02,
         0x00, 0x00, 0x00,
@@ -191,11 +208,9 @@ int motor_pause(int fd) {
  * @param speed 运动速度（400 ~ 40000）
  * @return 成功返回 0，失败返回 -1
  */
-int motor_return_home(int fd, int speed) {
-    if (speed < 400 || speed > 40000) {
-        fprintf(stderr, "Error: Speed %d out of range (400-40000)\n", speed);
-        return -1;
-    }
+int motor_return_home(int fd, int speed)        //回程序零是回到开机时的地方
+{
+    if (speed < 0 || speed > 40000) return -1;
 
     unsigned char packet[10] = {
         0x55, 0xAA, 0x07,
@@ -221,11 +236,9 @@ int motor_return_home(int fd, int speed) {
  * @param direction 方向（MOTOR_HOME_FORWARD 或 MOTOR_HOME_REVERSE）
  * @return 成功返回 0，失败返回 -1
  */
-int motor_go_home(int fd, int speed, motor_home_direction_t direction) {
-    if (speed < 400 || speed > 40000) {
-        fprintf(stderr, "Error: Speed %d out of range (400-40000)\n", speed);
-        return -1;
-    }
+int motor_go_home(int fd, int speed, motor_home_direction_t direction)  //回机械零是回到红外扫描的地方
+{
+    if (speed < 0 || speed > 40000) return -1;
 
     unsigned char direction_code = (direction == MOTOR_HOME_FORWARD) ? 0x09 : 0x0A;
 
@@ -247,7 +260,8 @@ int motor_go_home(int fd, int speed, motor_home_direction_t direction) {
 }
 
 //motor_status_t status;   motor_get_status(fd, &status);
-int motor_get_status(int fd, motor_status_t *status_out) {
+int motor_get_status(int fd, motor_status_t *status_out) 
+{
     // 发送读取状态指令
     unsigned char cmd[10] = { 0x55, 0xAA, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC3 };
     int n = write(fd, cmd, sizeof(cmd));
@@ -298,7 +312,8 @@ int motor_get_status(int fd, motor_status_t *status_out) {
 }
 
 // CRC计算函数
-uint16_t modbus_crc16(const uint8_t *buf, int len) {
+uint16_t modbus_crc16(const uint8_t *buf, int len) 
+{
     uint16_t crc = 0xFFFF;
     for (int pos = 0; pos < len; pos++) {
         crc ^= (uint16_t)buf[pos];
@@ -315,7 +330,8 @@ uint16_t modbus_crc16(const uint8_t *buf, int len) {
 }
 
 // 读取温度函数  read_temperature(fd, &temp) = 0成功 =-1失败
-int read_temperature(int fd, float *temperature) {
+int read_temperature(int fd, float *temperature) 
+{
     // 构造请求帧：01 04 00 00 00 01 CRC低 CRC高
     uint8_t request[8] = {0x01, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
     uint16_t crc = modbus_crc16(request, 6);
@@ -356,7 +372,8 @@ int read_temperature(int fd, float *temperature) {
 }
 
 //读取湿度函数  read_humidity(fd, &humidity) =0 成功  =-1失败
-int read_humidity(int fd, float *humidity) {
+int read_humidity(int fd, float *humidity) 
+{
     // 构造请求帧：01 04 00 01 00 01 CRC低 CRC高
     uint8_t request[8] = {0x01, 0x04, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00};
     uint16_t crc = modbus_crc16(request, 6);
@@ -396,6 +413,7 @@ int read_humidity(int fd, float *humidity) {
     return 0;
 }
 
-void close_serial(int fd) {
+void close_serial(int fd) 
+{
     close(fd);
 }

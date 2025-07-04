@@ -26,6 +26,7 @@ extern int32_t sample_motor_ccw_seconds;
 extern int32_t sample_motor_cw_seconds;
 extern int32_t sample_motor_stop_seconds;
 extern int32_t rotational_speed;
+extern int32_t rotational_radius;
 extern char address[100];
 extern char gateway[100];
 extern char dns[100];

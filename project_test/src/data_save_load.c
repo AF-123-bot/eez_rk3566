@@ -1,11 +1,47 @@
 #include "data_save_load.h"
 #include "screens.h"
 #include "actions.h"
+#include "fonts.h"
 #include <stdio.h>
+#include <lvgl.h>
 #include <stdlib.h>
+#include <string.h>
 #include <cjson/cJSON.h>
 
 extern objects_t objects;
+
+void add_log_to_container_1(const char *message) 
+{
+    time_t now = time(NULL);
+    struct tm *tm_info = localtime(&now);
+    char time_buf[32];
+    strftime(time_buf, sizeof(time_buf), "[%Y.%m.%d %H:%M] ", tm_info);
+
+    char full_msg[256];
+    snprintf(full_msg, sizeof(full_msg), "%s%s", time_buf, message);
+
+    // 创建新的 label
+    lv_obj_t *label = lv_label_create(objects.sampling_frequency_container);
+    lv_label_set_text(label, full_msg);
+    lv_label_set_long_mode(label, LV_LABEL_LONG_WRAP);
+    lv_obj_set_width(label, lv_obj_get_width(objects.sampling_frequency_container));
+    lv_obj_set_style_text_font(label, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(label, lv_color_white(), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_margin_bottom(label, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // ⚠️ 将 label 移动到最前面（顶部）
+    lv_obj_move_to_index(label, 0);
+
+    // 限制最大日志数为 100（删除最后一个，即最旧的）
+    uint32_t count = lv_obj_get_child_cnt(objects.sampling_frequency_container);
+    if (count > 100) {
+        lv_obj_t *last = lv_obj_get_child(objects.sampling_frequency_container, count - 1);
+        lv_obj_del(last);
+    }
+
+    // 滚动到顶部显示最新日志
+    lv_obj_scroll_to_y(objects.sampling_frequency_container, 0, LV_ANIM_OFF);
+}
 
 void save_shift_data(
     int32_t start_time_1,
@@ -366,7 +402,7 @@ void load_communicate_data(char *address, char *gateway, char *dns, size_t max_l
     cJSON_Delete(root);
 }
 
-void save_test_data(int32_t rotational_speed) 
+void save_test_data(int32_t rotational_speed, int32_t rotational_radius) 
 {
     const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
@@ -387,27 +423,30 @@ void save_test_data(int32_t rotational_speed)
         fclose(fp);
     }
 
-    // 若文件不存在或 JSON 解析失败，则新建根对象
     if (!root) {
         root = cJSON_CreateObject();
     }
 
-    // 获取或创建 last_data 对象
     cJSON *last_data = cJSON_GetObjectItem(root, "last_data");
     if (!last_data) {
         last_data = cJSON_CreateObject();
         cJSON_AddItemToObject(root, "last_data", last_data);
     }
 
-    // 替换或添加 rotational_speed 字段
-    cJSON *speed_item = cJSON_GetObjectItem(last_data, "rotational_speed");
-    if (speed_item) {
+    // 更新 rotational_speed
+    if (cJSON_HasObjectItem(last_data, "rotational_speed")) {
         cJSON_ReplaceItemInObject(last_data, "rotational_speed", cJSON_CreateNumber(rotational_speed));
     } else {
         cJSON_AddNumberToObject(last_data, "rotational_speed", rotational_speed);
     }
 
-    // 写回 JSON 文件
+    // 更新 rotational_radius
+    if (cJSON_HasObjectItem(last_data, "rotational_radius")) {
+        cJSON_ReplaceItemInObject(last_data, "rotational_radius", cJSON_CreateNumber(rotational_radius));
+    } else {
+        cJSON_AddNumberToObject(last_data, "rotational_radius", rotational_radius);
+    }
+
     char *json_str = cJSON_Print(root);
     fp = fopen(filepath, "w");
     if (fp && json_str) {
@@ -421,9 +460,9 @@ void save_test_data(int32_t rotational_speed)
     cJSON_Delete(root);
 }
 
-void load_test_data(int32_t *rotational_speed) 
+void load_test_data(int32_t *rotational_speed, int32_t *rotational_radius) 
 {
-    if (!rotational_speed) return;  // 防止空指针
+    if (!rotational_speed || !rotational_radius) return;
 
     const char *filepath = "/home/cat/eez_rk3566/data.json";
     FILE *fp = fopen(filepath, "r");
@@ -468,8 +507,16 @@ void load_test_data(int32_t *rotational_speed)
         fprintf(stderr, "rotational_speed 字段不存在或不是数字\n");
     }
 
+    cJSON *radius_item = cJSON_GetObjectItem(last_data, "rotational_radius");
+    if (cJSON_IsNumber(radius_item)) {
+        *rotational_radius = (int32_t)(radius_item->valuedouble);
+    } else {
+        fprintf(stderr, "rotational_radius 字段不存在或不是数字\n");
+    }
+
     cJSON_Delete(root);
 }
+
 
 void save_logs_to_json()
 {
@@ -594,7 +641,7 @@ void load_logs_from_json()
             cJSON *log_item = cJSON_GetArrayItem(logs, i);
             if (cJSON_IsString(log_item)) {
                 printf("[读取] 添加日志项：%s\n", log_item->valuestring);
-                add_log_to_container(log_item->valuestring);
+                add_log_to_container_1(log_item->valuestring);
             }
         }
     } else {

@@ -5968,6 +5968,8 @@ freetype/fterrors.h
 freetype/fttypes.h
 -
 
+/home/cat/eez_rk3566/lvgl/src/libs/fsdrv/lv_fs_cbfs.c
+
 /home/cat/eez_rk3566/lvgl/src/libs/fsdrv/lv_fs_fatfs.c
 ../../../lvgl.h
 /home/cat/eez_rk3566/lvgl/lvgl.h
@@ -7191,6 +7193,8 @@ lv_style.h
 /home/cat/eez_rk3566/lvgl/src/misc/lv_style_private.h
 lv_style.h
 /home/cat/eez_rk3566/lvgl/src/misc/lv_style.h
+
+/home/cat/eez_rk3566/lvgl/src/misc/lv_templ.c
 
 /home/cat/eez_rk3566/lvgl/src/misc/lv_text.c
 lv_text_private.h
@@ -8575,6 +8579,8 @@ lv_msgbox.h
 /home/cat/eez_rk3566/lvgl/src/widgets/msgbox/lv_msgbox.h
 ../../core/lv_obj_private.h
 /home/cat/eez_rk3566/lvgl/src/core/lv_obj_private.h
+
+/home/cat/eez_rk3566/lvgl/src/widgets/objx_templ/lv_objx_templ.c
 
 /home/cat/eez_rk3566/lvgl/src/widgets/property/lv_dropdown_properties.c
 ../dropdown/lv_dropdown.h

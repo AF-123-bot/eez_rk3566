@@ -51,8 +51,8 @@ void save_communicate_data(const char *address, const char *gateway, const char 
 void load_communicate_data(char *address, char *gateway, char *dns, size_t max_len);
 
 // test_page
-void save_test_data(int32_t rotational_speed);
-void load_test_data(int32_t *rotational_speed);
+void save_test_data(int32_t rotational_speed, int32_t rotational_radius);
+void load_test_data(int32_t *rotational_speed, int32_t *rotational_radius);
 
 #ifdef __cplusplus
 }

@@ -24,17 +24,15 @@ typedef struct {
 } motor_status_t;
 
 int open_serial(const char *device, int baudrate);
-int set_serial_attr(int fd, int baudrate, int databits, char parity, int stopbits, int timeout_sec);
 void close_serial(int fd);
 int motor_forward(int fd, int speed);
 int motor_reverse(int fd, int speed);
-int motor_move_absolute(int fd, int speed, int32_t steps);
+int motor_move_absolute(int fd, int speed, int32_t radius);
+int motor_move_incremental(int fd, int speed, int32_t radius);
 int motor_pause(int fd);
 int motor_return_home(int fd, int speed);
 int motor_go_home(int fd, int speed, motor_home_direction_t direction);
 int motor_get_status(int fd, motor_status_t *status_out);
-
-extern int uart_fd;  // 声明全局串口文件描述符
 
 #ifdef __cplusplus
 }

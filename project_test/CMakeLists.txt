@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(project_test LANGUAGES C CXX)
+project(eez_rk3566 LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -O2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O2")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3")
 
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -66,6 +66,8 @@ add_executable(${PROJECT_NAME}
   lib/eez-flow.cpp
   lib/vars.c
 )
+
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "main")
 
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${PROJECT_SOURCE_DIR}

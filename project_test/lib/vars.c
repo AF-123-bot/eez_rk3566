@@ -19,7 +19,9 @@ int32_t tem;
 char address[100] = { 0 };
 char gateway[100] = { 0 };
 char dns[100] = { 0 };
+char phonenum[100] = { 0 };
 int32_t rotational_speed;
+int32_t rotational_radius;
 int32_t sample_motor_ccw_seconds;
 int32_t sample_motor_cw_seconds;
 int32_t sample_motor_stop_seconds;
@@ -68,6 +70,15 @@ void set_var_gateway(const char *value)
     gateway[sizeof(gateway) / sizeof(char) - 1] = 0;
 }
 
+const char *get_var_phonenum() {
+    return phonenum;
+}
+
+void set_var_phonenum(const char *value) {
+    strncpy(phonenum, value, sizeof(phonenum) / sizeof(char));
+    phonenum[sizeof(phonenum) / sizeof(char) - 1] = 0;
+}
+
 int32_t get_var_rotational_speed() 
 {
     return rotational_speed;
@@ -76,6 +87,14 @@ int32_t get_var_rotational_speed()
 void set_var_rotational_speed(int32_t value) 
 {
     rotational_speed = value;
+}
+
+int32_t get_var_rotational_radius() {
+    return rotational_radius;
+}
+
+void set_var_rotational_radius(int32_t value) {
+    rotational_radius = value;
 }
 
 int32_t get_var_start_time_1() 

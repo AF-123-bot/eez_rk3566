@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <pthread.h>
-#include <time.h>
 #include <stdbool.h>
-#include <lvgl.h>
 #include <string.h>
 #include <unistd.h>
 #include "fonts.h"
@@ -12,6 +8,7 @@
 #include "screens.h"
 #include "gpio.h"
 #include "uart.h"
+#include "main.h"
 #include "data_save_load.h"
 
 extern int32_t start_time_1;
@@ -27,13 +24,14 @@ extern int32_t sample_motor_ccw_seconds;
 extern int32_t sample_motor_cw_seconds;
 extern int32_t sample_motor_stop_seconds;
 extern int32_t rotational_speed;
+extern int32_t rotational_radius;
 extern char address[100];
 extern char gateway[100];
 extern char dns[100];
 
 volatile bool motor_thread_stop_flag = false;   //线程标志
 int32_t sample_motor_flag = 0; // 0电机空闲中 ， 1电机运行中
-extern int uart_fd;  // 声明全局串口文件描述符
+int32_t rotate_motor_flag =0; // 0电机空闲中 ， 1电机运行中
 enum ScreensEnum current_page = 0;
 
 void *motor_thread_func(void *arg); // 声明电机线程函数
@@ -274,8 +272,15 @@ void action_save_setting_func(lv_event_t * e)
         else if(obj == objects.btn_save_motor_test_setting)         //motor_test_setting页面保存触发
         {
             rotational_speed = get_var_rotational_speed();
+            rotational_radius = get_var_rotational_radius();
+
+            if(rotational_speed > 40000 || rotational_speed < 0)
+            {
+                set_var_rotational_radius(0);
+                show_warning_page("警告:旋转速度请控制在\n0-40000范围以内！",parent);
+            }    
             
-            save_test_data(rotational_speed);   //保存test页面内容
+            save_test_data(rotational_speed,rotational_radius);   //保存test页面内容
         }
     }
 }
@@ -286,24 +291,7 @@ void action_user_shutdown_reboot(lv_event_t * e)
     lv_obj_t *obj = lv_event_get_target(e);
     if(code == LV_EVENT_PRESSED)
     {
-        if(obj == objects.btn_user)
-        {
-            lv_obj_clear_flag(objects.sr_sure_container, LV_OBJ_FLAG_HIDDEN);   //显示确认是否关机界面
-            // 将页面控件都disabled 
-            lv_obj_add_state(objects.btn_user, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.btn_factory_reset, LV_STATE_DISABLED);
-            lv_obj_add_state(objects.setting8, LV_STATE_DISABLED);
-            /////////////////////////////////////////////////////////////////////
-        }
-        else if(obj == objects.btn_user_confuse)
-        {
-            lv_obj_add_flag(objects.sr_sure_container, LV_OBJ_FLAG_HIDDEN);     //隐藏界面
-            // 将页面空间abled
-            lv_obj_clear_state(objects.btn_user, LV_STATE_DISABLED);
-            lv_obj_clear_state(objects.btn_factory_reset, LV_STATE_DISABLED);
-            lv_obj_clear_state(objects.setting8, LV_STATE_DISABLED);
-        }
-        else if(obj == objects.btn_user_reboot)
+        if(obj == objects.btn_user_reboot)
         {
             // save_logs_to_json();
             system("reboot");
@@ -338,7 +326,7 @@ void action_btn_factory_reset(lv_event_t * e)
     //初始化communicate页面数据
 
     //初始化test页面数据
-    save_test_data(0);
+    save_test_data(0,0);
     set_var_rotational_speed(0);
 }
 
@@ -451,7 +439,8 @@ void action_btn_auto_take_cw(lv_event_t * e)
             sample_motor_stop_seconds = get_var_sample_motor_stop_seconds();
             motor_thread_stop_flag = false;
             pthread_t motor_thread;
-            if (pthread_create(&motor_thread, NULL, motor_thread_func, NULL) != 0) {
+            if (pthread_create(&motor_thread, NULL, motor_thread_func, NULL) != 0) 
+            {
                 perror("pthread_create failed");
             } else {
                 pthread_detach(motor_thread); // 不阻塞主线程
@@ -564,23 +553,62 @@ void action_btn_rotate_motor(lv_event_t * e)    //旋转电机测试按钮
     lv_obj_t *obj = lv_event_get_target(e);
     if(code == LV_EVENT_PRESSED)
     {
-        if(obj == objects.btn_rotate_motor_cw)      //执行旋转电机正转操作
+        if(obj == objects.btn_rotate_motor_cw && rotate_motor_flag == 0)      //执行旋转电机正转操作
         {
+            rotate_motor_flag = 1;
             lv_obj_add_state(objects.btn_rotate_motor_ccw, LV_STATE_DISABLED);   //将反转按钮设为disabled
             rotational_speed = get_var_rotational_speed();
-            motor_forward(uart_fd,rotational_speed);        //发送旋转电机反转指令
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_forward(fd,rotational_speed);        //发送旋转电机正转指令
+            close_serial(fd);
         }
-        else if(obj == objects.btn_rotate_motor_ccw)        //执行旋转电机反转操作
+        else if(obj == objects.btn_rotate_motor_ccw && rotate_motor_flag == 0)        //执行旋转电机反转操作
         {
+            rotate_motor_flag = 1;
             lv_obj_add_state(objects.btn_rotate_motor_cw, LV_STATE_DISABLED);   //将正转按钮设为disabled
             rotational_speed = get_var_rotational_speed();
-            motor_reverse(uart_fd,rotational_speed);
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_reverse(fd,rotational_speed);
+            close_serial(fd);
         }
-        else if(obj == objects.btn_rotate_motor_stop)       //执行旋转电机停止操作
+        else if(obj == objects.btn_rotate_motor_stop && rotate_motor_flag == 1)       //执行旋转电机停止操作
         {
+            rotate_motor_flag = 0;
             lv_obj_clear_state(objects.btn_rotate_motor_cw, LV_STATE_DISABLED);   //将正转按钮设为abled
             lv_obj_clear_state(objects.btn_rotate_motor_ccw, LV_STATE_DISABLED);   //将反转按钮设为abled
-            motor_pause(uart_fd);
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_pause(fd);
+            close_serial(fd);
+        }
+        else if(obj == objects.btn_rotate_motor_absolute_motion)    //旋转电机绝对运动
+        {
+            rotational_speed = get_var_rotational_speed();
+            rotational_radius = get_var_rotational_radius();
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_move_absolute(fd,rotational_speed,rotational_radius);
+            close_serial(fd);
+        }
+        else if(obj == objects.btn_rotate_motor_incremental_motion)     //旋转电机增量运动
+        {
+            rotational_speed = get_var_rotational_speed();
+            rotational_radius = get_var_rotational_radius();
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_move_incremental(fd,rotational_speed,rotational_radius);
+            close_serial(fd); 
+        }
+        else if(obj == objects.btn_rotate_motor_return_program0)    //旋转电机回程序零
+        {
+            rotational_speed = get_var_rotational_speed();
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_return_home(fd,rotational_speed);
+            close_serial(fd);
+        }
+        else if(obj == objects.btn_rotate_motor_return_mechanical0)     //旋转电机回机械零
+        {
+            rotational_speed = get_var_rotational_speed();
+            int fd = open_serial("/dev/ttyMOTOR", 9600);
+            motor_go_home(fd,rotational_speed,MOTOR_HOME_FORWARD);
+            close_serial(fd);
         }
     }
 }

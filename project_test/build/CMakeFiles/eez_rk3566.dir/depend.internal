@@ -4,6 +4,7 @@
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o
  ../include/data_save_load.h
  ../include/gpio.h
+ ../include/main.h
  ../include/uart.h
  ../lv_conf.h
  ../lvgl/lv_version.h
@@ -9790,6 +9791,7 @@ CMakeFiles/eez_rk3566.dir/lib/vars.c.o
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o
  ../include/data_save_load.h
  ../lib/actions.h
+ ../lib/fonts.h
  ../lib/screens.h
  ../lv_conf.h
  ../lvgl/lv_version.h

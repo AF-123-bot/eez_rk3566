@@ -3,6 +3,7 @@
 
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../include/data_save_load.h
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../include/gpio.h
+CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../include/main.h
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../include/uart.h
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../lv_conf.h
 CMakeFiles/eez_rk3566.dir/lib/actions.c.o: ../lvgl/lv_version.h
@@ -9789,6 +9790,7 @@ CMakeFiles/eez_rk3566.dir/lib/vars.c.o: ../lib/vars.h
 
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../include/data_save_load.h
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../lib/actions.h
+CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../lib/fonts.h
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../lib/screens.h
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../lv_conf.h
 CMakeFiles/eez_rk3566.dir/src/data_save_load.c.o: ../lvgl/lv_version.h

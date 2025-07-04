@@ -3,13 +3,13 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu11
+C_FLAGS =  -Wall -Wextra -O3 -g   -std=gnu11
 
 C_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
 C_INCLUDES = -I/home/cat/eez_rk3566 -I/home/cat/eez_rk3566/include -I/home/cat/eez_rk3566/lib -I/usr/include/SDL2 -I/usr/include/libpng16 -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 
-CXX_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu++17
+CXX_FLAGS =  -Wall -Wextra -O3 -g   -std=gnu++17
 
 CXX_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 

@@ -9,7 +9,7 @@ ASM_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 
 ASM_INCLUDES = -isystem /home/cat/eez_rk3566/lvgl -isystem /home/cat/eez_rk3566/build/lvgl 
 
-C_FLAGS =  -Wall -Wextra -O2 -g   -std=gnu11
+C_FLAGS =  -Wall -Wextra -O3 -g   -std=gnu11
 
 C_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_LVGL_H_INCLUDE_SIMPLE
 

@@ -1,13 +1,14 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[rkui.eez-project]:/userPages/5",
+    "selectedUserPageObject": "[rkui.eez-project]:/userPages/0",
     "selectedActionObject": "[rkui.eez-project]:/actions/5",
+    "selectedGlobalVariableObject": "[rkui.eez-project]:/variables/globalVariables/9",
     "selectedStyleObject": "[rkui.eez-project]:/lvglStyles/styles/0",
-    "selectedFontObject": "[rkui.eez-project]:/fonts/1",
-    "selectedBitmapObject": "[rkui.eez-project]:/bitmaps/5",
+    "selectedFontObject": "[rkui.eez-project]:/fonts/3",
+    "selectedBitmapObject": "[rkui.eez-project]:/bitmaps/11",
     "selectedLvglGroupObject": "[rkui.eez-project]:/lvglGroups/groups/0",
     "subnavigationSelectedItems": {
-      "variables-tab/sub-navigation/selected-item": "Widgets"
+      "variables-tab/sub-navigation/selected-item": "Global"
     }
   },
   "layoutModel": {
@@ -28,7 +29,7 @@
           },
           {
             "type": "border",
-            "selected": 1,
+            "selected": 2,
             "size": 240,
             "location": "right",
             "children": [
@@ -204,9 +205,32 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 46.1213588140065,
+              "selected": 5,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
+                {
+                  "type": "tab",
+                  "id": "#f3e5205f-c15e-4284-bed9-a17025d2a885",
+                  "name": "Sample_setting_page",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[rkui.eez-project]:/userPages/2",
+                    "permanent": false
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#77ca00d5-9750-4906-adca-ae756cf0b1fb",
+                  "name": "30",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[rkui.eez-project]:/fonts/3",
+                    "permanent": false
+                  },
+                  "icon": "material:font_download"
+                },
                 {
                   "type": "tab",
                   "id": "#23e9f489-f516-43b3-af31-8e9b289d26d6",
@@ -214,7 +238,7 @@
                   "component": "editor",
                   "config": {
                     "objectPath": "[rkui.eez-project]:/userPages/5",
-                    "permanent": false
+                    "permanent": true
                   },
                   "icon": "svg:page"
                 },
@@ -252,7 +276,8 @@
                   },
                   "icon": "svg:page"
                 }
-              ]
+              ],
+              "active": true
             },
             {
               "type": "row",
@@ -272,8 +297,7 @@
                       "enableClose": false,
                       "icon": "svg:properties"
                     }
-                  ],
-                  "active": true
+                  ]
                 },
                 {
                   "type": "tabset",
@@ -594,8 +618,7 @@
                       "component": "bitmaps",
                       "enableClose": false
                     }
-                  ],
-                  "active": true
+                  ]
                 },
                 {
                   "type": "tabset",
@@ -613,7 +636,8 @@
                       "component": "preview",
                       "enableClose": false
                     }
-                  ]
+                  ],
+                  "active": true
                 }
               ]
             }
@@ -1260,19 +1284,16 @@
         "0": {
           "0": {},
           "1": {},
+          "5": {},
           "6": {},
-          "7": {
-            "1": {},
-            "2": {}
-          },
-          "10": {}
+          "8": {}
         },
         "1": {}
       },
       "transform": {
         "translate": {
-          "x": -299.35785048354626,
-          "y": -312.231204544489
+          "x": -297.35979779701444,
+          "y": -203.34908478042408
         },
         "scale": 0.67
       },
@@ -1288,22 +1309,21 @@
         "0": {
           "2": {},
           "4": {
+            "3": {},
             "4": {}
           },
           "5": {},
           "6": {}
         },
         "1": {},
-        "2": {
-          "$selected": true
-        }
+        "2": {}
       },
       "transform": {
         "translate": {
-          "x": -418.55754975289983,
-          "y": -496.2837856780342
+          "x": -296.15764740914983,
+          "y": -254.68374905694043
         },
-        "scale": 0.67
+        "scale": 0.5
       },
       "timeline": {
         "isEditorActive": false,
@@ -1316,14 +1336,13 @@
       "selection": {
         "0": {
           "3": {},
+          "4": {},
           "5": {},
           "7": {
             "0": {}
           },
           "8": {},
-          "10": {
-            "$selected": true
-          }
+          "10": {}
         },
         "1": {},
         "5": {},
@@ -1331,8 +1350,8 @@
       },
       "transform": {
         "translate": {
-          "x": -425.0630745601144,
-          "y": -354.25003903245425
+          "x": -225.0630745601144,
+          "y": -187.05005734300113
         },
         "scale": 0.67
       },
@@ -1354,9 +1373,7 @@
             }
           },
           "4": {
-            "3": {
-              "$selected": true
-            },
+            "3": {},
             "4": {},
             "5": {}
           },
@@ -1372,10 +1389,10 @@
       },
       "transform": {
         "translate": {
-          "x": -211.54288856417747,
-          "y": -131.57476398543366
+          "x": -286.2582283347798,
+          "y": -201.48086834326344
         },
-        "scale": 0.5
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1389,28 +1406,18 @@
         "0": {
           "0": {},
           "3": {
-            "0": {},
-            "2": {
-              "0": {}
-            },
-            "4": {
-              "0": {}
-            }
+            "2": {},
+            "3": {}
           },
           "4": {
-            "3": {
-              "0": {}
-            },
-            "4": {},
-            "5": {},
-            "6": {},
-            "7": {},
-            "8": {}
+            "10": {},
+            "11": {},
+            "12": {},
+            "13": {}
           },
           "5": {},
-          "8": {
-            "$selected": true
-          },
+          "6": {},
+          "8": {},
           "9": {}
         },
         "5": {},
@@ -1418,10 +1425,10 @@
       },
       "transform": {
         "translate": {
-          "x": -287.04836732072374,
-          "y": -403.4293865051966
+          "x": -579.5973369140626,
+          "y": -325.97897048950205
         },
-        "scale": 0.75
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1434,9 +1441,7 @@
       "selection": {
         "0": {
           "4": {
-            "0": {
-              "$selected": true
-            },
+            "0": {},
             "1": {
               "0": {},
               "1": {
@@ -1451,8 +1456,8 @@
       },
       "transform": {
         "translate": {
-          "x": -304.5627617244225,
-          "y": -163.52553277011236
+          "x": -218.96278613848494,
+          "y": -197.9254961490186
         },
         "scale": 0.67
       },
@@ -1589,7 +1594,12 @@
     "[rkui.eez-project]:/userPages/6[flow-state]": {
       "selection": {
         "0": {
-          "0": {}
+          "0": {},
+          "3": {
+            "1": {
+              "$selected": true
+            }
+          }
         }
       },
       "transform": {
@@ -1666,12 +1676,10 @@
   "showComponentDescriptions": true,
   "logsPanelFilter": "all",
   "selectedStylePropertyName": "",
-  "lvglPart": "ITEMS",
-  "lvglState": "CHECKED",
+  "lvglPart": "MAIN",
+  "lvglState": "DEFAULT",
   "lvglExpandedPropertiesGroup": [
-    "TEXT",
-    "BORDER",
-    "BACKGROUND"
+    "TEXT"
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
