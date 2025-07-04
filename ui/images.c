@@ -1,6 +1,6 @@
 #include "images.h"
 
-const ext_img_desc_t images[15] = {
+const ext_img_desc_t images[16] = {
     { "home", &img_home },
     { "setting7", &img_setting7 },
     { "background1", &img_background1 },
@@ -16,4 +16,5 @@ const ext_img_desc_t images[15] = {
     { "power", &img_power },
     { "reboot", &img_reboot },
     { "shutdown", &img_shutdown },
+    { "sr_restore", &img_sr_restore },
 };
