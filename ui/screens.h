@@ -133,6 +133,9 @@ typedef struct _objects_t {
     lv_obj_t *button_left_auto;
     lv_obj_t *obj41;
     lv_obj_t *input_auto_sampling;
+    lv_obj_t *unit_motor_ccw_seconds;
+    lv_obj_t *unit_motor_cw_seconds;
+    lv_obj_t *unit_motor_stop_seconds;
     lv_obj_t *obj42;
     lv_obj_t *keyboard_sample;
     lv_obj_t *obj43;

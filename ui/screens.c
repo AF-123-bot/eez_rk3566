@@ -260,13 +260,13 @@ static void event_handler_cb_sample_setting_page_motor_ccw_seconds(lv_event_t *e
         lv_obj_t *ta = lv_event_get_target(e);
         if (tick_value_change_obj != ta) {
             const char *value = lv_textarea_get_text(ta);
-            assignStringProperty(flowState, 20, 3, value, "Failed to assign Text in Textarea widget");
+            assignStringProperty(flowState, 22, 3, value, "Failed to assign Text in Textarea widget");
         }
     }
     
     if (event == LV_EVENT_PRESSED) {
         e->user_data = (void *)0;
-        flowPropagateValueLVGLEvent(flowState, 20, 0, e);
+        flowPropagateValueLVGLEvent(flowState, 22, 0, e);
     }
 }
 
@@ -279,13 +279,13 @@ static void event_handler_cb_sample_setting_page_motor_cw_seconds(lv_event_t *e)
         lv_obj_t *ta = lv_event_get_target(e);
         if (tick_value_change_obj != ta) {
             const char *value = lv_textarea_get_text(ta);
-            assignStringProperty(flowState, 21, 3, value, "Failed to assign Text in Textarea widget");
+            assignStringProperty(flowState, 23, 3, value, "Failed to assign Text in Textarea widget");
         }
     }
     
     if (event == LV_EVENT_PRESSED) {
         e->user_data = (void *)0;
-        flowPropagateValueLVGLEvent(flowState, 21, 0, e);
+        flowPropagateValueLVGLEvent(flowState, 23, 0, e);
     }
 }
 
@@ -298,13 +298,13 @@ static void event_handler_cb_sample_setting_page_motor_stop_seconds(lv_event_t *
         lv_obj_t *ta = lv_event_get_target(e);
         if (tick_value_change_obj != ta) {
             const char *value = lv_textarea_get_text(ta);
-            assignStringProperty(flowState, 22, 3, value, "Failed to assign Text in Textarea widget");
+            assignStringProperty(flowState, 24, 3, value, "Failed to assign Text in Textarea widget");
         }
     }
     
     if (event == LV_EVENT_PRESSED) {
         e->user_data = (void *)0;
-        flowPropagateValueLVGLEvent(flowState, 22, 0, e);
+        flowPropagateValueLVGLEvent(flowState, 24, 0, e);
     }
 }
 
@@ -1811,6 +1811,24 @@ void create_screen_sample_setting_page() {
                     lv_label_set_text(obj, "清灰时间：");
                 }
                 {
+                    // Unit_motor_ccw_seconds
+                    lv_obj_t *obj = lv_dropdown_create(parent_obj);
+                    objects.unit_motor_ccw_seconds = obj;
+                    lv_obj_set_pos(obj, 491, 72);
+                    lv_obj_set_size(obj, 63, LV_SIZE_CONTENT);
+                    lv_dropdown_set_options(obj, "s\nm\nh");
+                    lv_dropdown_set_selected(obj, 0);
+                }
+                {
+                    // Unit_motor_cw_seconds
+                    lv_obj_t *obj = lv_dropdown_create(parent_obj);
+                    objects.unit_motor_cw_seconds = obj;
+                    lv_obj_set_pos(obj, 491, 138);
+                    lv_obj_set_size(obj, 63, LV_SIZE_CONTENT);
+                    lv_dropdown_set_options(obj, "s\nm\nh");
+                    lv_dropdown_set_selected(obj, 0);
+                }
+                {
                     lv_obj_t *obj = lv_label_create(parent_obj);
                     lv_obj_set_pos(obj, 52, 147);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
@@ -1831,7 +1849,7 @@ void create_screen_sample_setting_page() {
                     lv_obj_t *obj = lv_textarea_create(parent_obj);
                     objects.motor_ccw_seconds = obj;
                     lv_obj_set_pos(obj, 191, 70);
-                    lv_obj_set_size(obj, 313, 46);
+                    lv_obj_set_size(obj, 290, 46);
                     lv_textarea_set_max_length(obj, 128);
                     lv_textarea_set_one_line(obj, false);
                     lv_textarea_set_password_mode(obj, false);
@@ -1843,7 +1861,7 @@ void create_screen_sample_setting_page() {
                     lv_obj_t *obj = lv_textarea_create(parent_obj);
                     objects.motor_cw_seconds = obj;
                     lv_obj_set_pos(obj, 191, 136);
-                    lv_obj_set_size(obj, 313, 46);
+                    lv_obj_set_size(obj, 290, 46);
                     lv_textarea_set_max_length(obj, 128);
                     lv_textarea_set_one_line(obj, false);
                     lv_textarea_set_password_mode(obj, false);
@@ -1855,7 +1873,7 @@ void create_screen_sample_setting_page() {
                     lv_obj_t *obj = lv_textarea_create(parent_obj);
                     objects.motor_stop_seconds = obj;
                     lv_obj_set_pos(obj, 191, 204);
-                    lv_obj_set_size(obj, 313, 46);
+                    lv_obj_set_size(obj, 290, 46);
                     lv_textarea_set_max_length(obj, 128);
                     lv_textarea_set_one_line(obj, false);
                     lv_textarea_set_password_mode(obj, false);
@@ -1864,35 +1882,20 @@ void create_screen_sample_setting_page() {
                 }
                 {
                     lv_obj_t *obj = lv_label_create(parent_obj);
-                    lv_obj_set_pos(obj, 529, 78);
-                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    add_style_font2(obj);
-                    lv_obj_set_style_text_font(obj, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
-                    lv_label_set_text(obj, "秒");
-                }
-                {
-                    lv_obj_t *obj = lv_label_create(parent_obj);
-                    lv_obj_set_pos(obj, 529, 213);
-                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    add_style_font2(obj);
-                    lv_obj_set_style_text_font(obj, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
-                    lv_label_set_text(obj, "秒");
-                }
-                {
-                    lv_obj_t *obj = lv_label_create(parent_obj);
-                    lv_obj_set_pos(obj, 529, 142);
-                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    add_style_font2(obj);
-                    lv_obj_set_style_text_font(obj, &ui_font_24, LV_PART_MAIN | LV_STATE_DEFAULT);
-                    lv_label_set_text(obj, "秒");
-                }
-                {
-                    lv_obj_t *obj = lv_label_create(parent_obj);
                     lv_obj_set_pos(obj, 23, 23);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     add_style_font2(obj);
                     lv_obj_set_style_text_font(obj, &ui_font_30, LV_PART_MAIN | LV_STATE_DEFAULT);
                     lv_label_set_text(obj, "自动取样");
+                }
+                {
+                    // Unit_motor_stop_seconds
+                    lv_obj_t *obj = lv_dropdown_create(parent_obj);
+                    objects.unit_motor_stop_seconds = obj;
+                    lv_obj_set_pos(obj, 491, 206);
+                    lv_obj_set_size(obj, 63, LV_SIZE_CONTENT);
+                    lv_dropdown_set_options(obj, "s\nm\nh");
+                    lv_dropdown_set_selected(obj, 0);
                 }
             }
         }
@@ -2068,7 +2071,7 @@ void tick_screen_sample_setting_page() {
     void *flowState = getFlowState(0, 2);
     (void)flowState;
     {
-        const char *new_val = evalTextProperty(flowState, 20, 3, "Failed to evaluate Text in Textarea widget");
+        const char *new_val = evalTextProperty(flowState, 22, 3, "Failed to evaluate Text in Textarea widget");
         const char *cur_val = lv_textarea_get_text(objects.motor_ccw_seconds);
         uint32_t max_length = lv_textarea_get_max_length(objects.motor_ccw_seconds);
         if (strncmp(new_val, cur_val, max_length) != 0) {
@@ -2078,7 +2081,7 @@ void tick_screen_sample_setting_page() {
         }
     }
     {
-        const char *new_val = evalTextProperty(flowState, 21, 3, "Failed to evaluate Text in Textarea widget");
+        const char *new_val = evalTextProperty(flowState, 23, 3, "Failed to evaluate Text in Textarea widget");
         const char *cur_val = lv_textarea_get_text(objects.motor_cw_seconds);
         uint32_t max_length = lv_textarea_get_max_length(objects.motor_cw_seconds);
         if (strncmp(new_val, cur_val, max_length) != 0) {
@@ -2088,7 +2091,7 @@ void tick_screen_sample_setting_page() {
         }
     }
     {
-        const char *new_val = evalTextProperty(flowState, 22, 3, "Failed to evaluate Text in Textarea widget");
+        const char *new_val = evalTextProperty(flowState, 24, 3, "Failed to evaluate Text in Textarea widget");
         const char *cur_val = lv_textarea_get_text(objects.motor_stop_seconds);
         uint32_t max_length = lv_textarea_get_max_length(objects.motor_stop_seconds);
         if (strncmp(new_val, cur_val, max_length) != 0) {
@@ -3382,7 +3385,7 @@ void ui_create_groups() {
 }
 
 static const char *screen_names[] = { "Main_page", "Shift_setting_page", "Sample_setting_page", "Communicate_setting_page", "Motor_Test_setting_page", "Historical_record_page", "warning_page" };
-static const char *object_names[] = { "main_page", "shift_setting_page", "sample_setting_page", "communicate_setting_page", "motor_test_setting_page", "historical_record_page", "warning_page", "setting8", "btn_user_reboot", "btn_user_shutdown", "btn_user_confuse", "btn_user", "btn_start_all", "obj0", "btn_save_shift_setting", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", "obj7", "obj8", "obj9", "obj10", "motor_ccw_seconds", "motor_cw_seconds", "motor_stop_seconds", "btn_save_sample_setting", "btn_manual_take_ccw", "btn_manual_take_cw", "btn_auto_take_cw", "btn_sample_stop", "obj11", "btn_home", "b1", "b2", "b4", "b5", "input_address", "input_gateway", "input_dns", "input_phonenum", "obj12", "obj13", "btn_save_communicate_setting", "btn_factory_reset", "obj14", "obj15", "obj16", "obj17", "obj18", "obj19", "btn_sample_motor_cw", "btn_sample_motor_stop", "btn_sample_motor_ccw", "btn_rotate_motor_cw", "btn_rotate_motor_ccw", "btn_rotate_motor_stop", "btn_rotate_motor_absolute_motion", "btn_rotate_motor_incremental_motion", "btn_rotate_motor_return_program0", "btn_rotate_motor_return_mechanical0", "input_rotational_speed", "btn_save_motor_test_setting", "input_rotational_radius", "obj20", "obj21", "obj22", "obj23", "obj24", "btn_warning_ok", "main1", "obj25", "information", "obj26", "temperature", "obj27", "obj28", "time", "date", "obj29", "obj30", "sample_motor_status", "rotate_motor_status", "barrel_1", "obj31", "barrel_2", "obj32", "barrel_3", "obj33", "main_label", "sr_sure_container", "title_2", "button_left_shift", "obj34", "input_main_shift", "obj35", "obj36", "obj37", "input_start_time1", "input_start_time2", "input_stop_time3", "input_start_time3", "input_stop_time2", "input_stop_time1", "input_sample_times3", "input_sample_times2", "input_sample_times1", "obj38", "obj39", "obj40", "label_successful_shift", "title_4", "button_left_auto", "obj41", "input_auto_sampling", "obj42", "keyboard_sample", "obj43", "label_successful_sample", "ccw_counting_time", "cw_counting_time", "tips_sample", "title_3", "button_left_communication", "b3", "obj44", "input_main_communication", "container_sr_restore", "keyboard_communication", "label_successful_communication", "title_1", "button_left_test", "obj45", "input_main_test", "label_successful_test", "keyboard_test", "title_6", "button_left_history", "obj46", "obj47", "obj48", "history_record", "obj49", "tem_chart", "obj50", "sampling_frequency_container", "failure_number_container", "title_5", "warning_l" };
+static const char *object_names[] = { "main_page", "shift_setting_page", "sample_setting_page", "communicate_setting_page", "motor_test_setting_page", "historical_record_page", "warning_page", "setting8", "btn_user_reboot", "btn_user_shutdown", "btn_user_confuse", "btn_user", "btn_start_all", "obj0", "btn_save_shift_setting", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", "obj7", "obj8", "obj9", "obj10", "motor_ccw_seconds", "motor_cw_seconds", "motor_stop_seconds", "btn_save_sample_setting", "btn_manual_take_ccw", "btn_manual_take_cw", "btn_auto_take_cw", "btn_sample_stop", "obj11", "btn_home", "b1", "b2", "b4", "b5", "input_address", "input_gateway", "input_dns", "input_phonenum", "obj12", "obj13", "btn_save_communicate_setting", "btn_factory_reset", "obj14", "obj15", "obj16", "obj17", "obj18", "obj19", "btn_sample_motor_cw", "btn_sample_motor_stop", "btn_sample_motor_ccw", "btn_rotate_motor_cw", "btn_rotate_motor_ccw", "btn_rotate_motor_stop", "btn_rotate_motor_absolute_motion", "btn_rotate_motor_incremental_motion", "btn_rotate_motor_return_program0", "btn_rotate_motor_return_mechanical0", "input_rotational_speed", "btn_save_motor_test_setting", "input_rotational_radius", "obj20", "obj21", "obj22", "obj23", "obj24", "btn_warning_ok", "main1", "obj25", "information", "obj26", "temperature", "obj27", "obj28", "time", "date", "obj29", "obj30", "sample_motor_status", "rotate_motor_status", "barrel_1", "obj31", "barrel_2", "obj32", "barrel_3", "obj33", "main_label", "sr_sure_container", "title_2", "button_left_shift", "obj34", "input_main_shift", "obj35", "obj36", "obj37", "input_start_time1", "input_start_time2", "input_stop_time3", "input_start_time3", "input_stop_time2", "input_stop_time1", "input_sample_times3", "input_sample_times2", "input_sample_times1", "obj38", "obj39", "obj40", "label_successful_shift", "title_4", "button_left_auto", "obj41", "input_auto_sampling", "unit_motor_ccw_seconds", "unit_motor_cw_seconds", "unit_motor_stop_seconds", "obj42", "keyboard_sample", "obj43", "label_successful_sample", "ccw_counting_time", "cw_counting_time", "tips_sample", "title_3", "button_left_communication", "b3", "obj44", "input_main_communication", "container_sr_restore", "keyboard_communication", "label_successful_communication", "title_1", "button_left_test", "obj45", "input_main_test", "label_successful_test", "keyboard_test", "title_6", "button_left_history", "obj46", "obj47", "obj48", "history_record", "obj49", "tem_chart", "obj50", "sampling_frequency_container", "failure_number_container", "title_5", "warning_l" };
 static const char *group_names[] = { "left_button" };
 static const char *style_names[] = { "font2" };
 
